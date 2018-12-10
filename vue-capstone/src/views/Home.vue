@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
+    <img alt="pot-hole" src="../assets/pothole-patrol.jpg">
     <google-map/>
     
   </div>
