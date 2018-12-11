@@ -20,6 +20,11 @@ public class AuthenticationController {
 	public AuthenticationController(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
+	
+	@RequestMapping(path="/", method=RequestMethod.GET)
+	public String displayHome() {
+		return "home";
+	}
 
 	@RequestMapping(path="/login", method=RequestMethod.GET)
 	public String displayLoginForm() {
@@ -30,7 +35,7 @@ public class AuthenticationController {
 	public String login(@RequestParam String userName, 
 						@RequestParam String password, 
 						@RequestParam(required=false) String destination,
-						HttpSession session) {
+						HttpSession session) { 
 		if(userDAO.searchForUsernameAndPassword(userName, password)) {
 			session.setAttribute("currentUser", userDAO.getUserByUserName(userName));
 			
@@ -43,6 +48,9 @@ public class AuthenticationController {
 			return "redirect:/login";
 		}
 	}
+	
+
+
 
 	@RequestMapping(path="/logout", method=RequestMethod.POST)
 	public String logout(ModelMap model, HttpSession session) {
