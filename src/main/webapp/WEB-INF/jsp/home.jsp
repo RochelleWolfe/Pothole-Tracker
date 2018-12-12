@@ -33,7 +33,7 @@
 
 	}
 	
-	var allPotholes = ${potholeList};
+	<!--var allPotholes = ${potholeList}; -->
 	
 	
 <!--	${potholeList}.forEach((pothole) => {
