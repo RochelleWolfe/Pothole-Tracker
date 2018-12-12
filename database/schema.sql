@@ -6,13 +6,30 @@ BEGIN;
 
 -- CREATE statements go here
 DROP TABLE IF EXISTS app_user;
+DROP TABLE IF EXISTS pothole;
 
 CREATE TABLE app_user (
-  id SERIAL PRIMARY KEY,
-  user_name varchar(32) NOT NULL UNIQUE,
-  password varchar(32) NOT NULL,
-  role varchar(32),
-  salt varchar(255) NOT NULL
+  id            SERIAL PRIMARY KEY,
+  user_name     varchar(32) NOT NULL    UNIQUE,
+  password      varchar(32) NOT NULL,
+  role          varchar(32),
+  salt          varchar(255) NOT NULL
 );
+
+CREATE TABLE pothole(
+        marker_id       varchar(32)      PRIMARY KEY,
+        lat             varchar(32),
+        long            varchar(32),
+        img             varchar(100),
+        street_add      varchar(50),
+        size            int
+);
+
+CREATE TABLE user_potholes(
+        user_id         SERIAL,
+        marker_id       varchar(32)
+        );        
+        
+
 
 COMMIT;
