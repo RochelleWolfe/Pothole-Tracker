@@ -25,7 +25,8 @@ public class HomeController {
 										HttpSession session) {
 	
 	List<Pothole> potholeList = potholeDao.getAllPotholes();
-		session.setAttribute("potholeList", potholeList);
+	
+	session.setAttribute("potholeList", potholeList);
 		
 		return "home";
 	}

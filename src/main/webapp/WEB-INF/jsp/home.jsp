@@ -2,7 +2,7 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
-<!-- <c:set var="potholeList" value="${potholeList}" /> -->
+<c:set var="potholeList" value="${potholeList}" />
 
 
 
@@ -33,19 +33,9 @@
 
 	}
 	
-	<!--var allPotholes = ${potholeList}; -->
+
 	
-	
-<!--	${potholeList}.forEach((pothole) => {
-		console.log(pothole.lat);
-	});
-	-->
-		
-	
-	
-	
-	
-	
+
 	
 	google.maps.event.addDomListener(window, 'load', initMap);
 </script>
