@@ -44,8 +44,8 @@
 					<c:if test="${not empty currentUser}">
 						<c:url var="dashboardHref" value="/users/${currentUser}" />
 						<li><a href="${dashboardHref}">Private Messages</a></li>
-						<c:url var="newMessageHref" value="/users/${currentUser}/messages/new" />
-						<li><a href="${newMessageHref}">New Message</a></li>
+						<c:url var="reportPotholeHref" value="/${currentUser}/reportPothole" />
+						<li><a href="${reportPotholeHref}">Report a Pothole</a></li>
 						<c:url var="sentMessagesHref" value="/users/${currentUser}/messages" />
 						<li><a href="${sentMessagesHref}">Sent Messages</a></li>
 						<c:url var="changePasswordHref" value="/users/${currentUser}/changePassword" />
@@ -72,6 +72,6 @@
 			</div>
 		</nav>
 		<c:if test="${not empty currentUser}">
-			<p id="currentUser">Current User: ${currentUser}</p>
+			<!-- <p id="currentUser">Current User: ${currentUser}</p> -->
 		</c:if>		
 		<div class="container">
