@@ -27,13 +27,15 @@ public class HomeController {
 
 		List<Pothole> potholeList = potholeDao.getAllPotholes();
 
-		ObjectMapper potholeJson = new ObjectMapper();
+		ObjectMapper objectMapper = new ObjectMapper();
 		try {
-			String json = potholeJson.writeValueAsString(potholeList);
+			String json = objectMapper.writeValueAsString(potholeList);
+			session.setAttribute("potholeJson", json);
+
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		session.setAttribute("potholeJson", potholeJson);
+		session.setAttribute("potholeList", potholeList);
 
 		return "home";
 	}
