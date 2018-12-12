@@ -42,7 +42,7 @@ public class JDBCPotholeDAO implements PotholeDao {
 	public void save(Pothole pothole) {
 		//String id = getNextId(); Used to set a unique id, I don't think we need this
 		String sqlInsertPothole = "INSERT INTO forum_post(marker_id, lat, long, img, street_add, size) VALUES (?,?,?,?,?,?)";
-		jdbcTemplate.update(sqlInsertPothole, pothole.setMarkerId(), pothole.setLat(), pothole.setLng(), pothole.setImg(), pothole.setSize());
+		jdbcTemplate.update(sqlInsertPothole, pothole.getMarkerId(), pothole.getLat(), pothole.getLng(), pothole.getImg(), pothole.getSize());
 		//pothole.setId(id); Used to set a unique id, I don't think we need this
 	}
 	
