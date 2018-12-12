@@ -34,8 +34,8 @@ CREATE TABLE user_potholes(
         );        
         
 INSERT into pothole (lat, long, img, street_add, size) 
-        values      (41.4156, -81.9235, null , 28206, 4);
+        values      (41.4156, -81.9235, 'abc', 28206, 4);
 INSERT into pothole (lat, long, img, street_add, size) 
-        values      (41.3750, -81.9085, null , 44555, 3);
+        values      (41.3750, -81.9085, 'def' , 44555, 3);
 
 COMMIT;

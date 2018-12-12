@@ -21,10 +21,10 @@ public class HomeController {
 	@RequestMapping(path="/{userName}", method=RequestMethod.GET)
 	public String displayUserHome(@PathVariable String userName,
 										HttpSession session) {
-		
-		List<Pothole> potholeList = potholeDao.getAllPotholes();
-		session.setAttribute("potholeList", potholeList);
-		
+	
+//	List<Pothole> potholeList = potholeDao.getAllPotholes();
+//		session.setAttribute("potholeList", potholeList);
+//		
 		return "home";
 	}
 
