@@ -34,7 +34,7 @@
 	}
 	
 	
-	console.log(${potholeList[0].lat});
+	
 
 	
 	google.maps.event.addDomListener(window, 'load', initMap);
