@@ -1,5 +1,6 @@
 package com.techelevator.model;
 
+import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,6 +36,7 @@ public class JDBCPotholeDAO implements PotholeDao {
 			pothole.setSize		(results.getInt		("size"			));
 			allPotholes.add(pothole);
 		}
+		
 		return allPotholes;
 	}
 	
