@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techelevator.model.Pothole;
 import com.techelevator.model.PotholeDao;
 
@@ -19,18 +21,21 @@ public class HomeController {
 
 	@Autowired
 	private PotholeDao potholeDao;
-	
-	@RequestMapping(path="/{userName}", method=RequestMethod.GET)
-	public String displayUserHome(@PathVariable String userName,
-										HttpSession session) {
-	
-	List<Pothole> potholeList = potholeDao.getAllPotholes();
-	
-	session.setAttribute("potholeList", potholeList);
-		
+
+	@RequestMapping(path = "/{userName}", method = RequestMethod.GET)
+	public String displayUserHome(@PathVariable String userName, HttpSession session) {
+
+		List<Pothole> potholeList = potholeDao.getAllPotholes();
+
+		ObjectMapper potholeJson = new ObjectMapper();
+		try {
+			String json = potholeJson.writeValueAsString(potholeList);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		session.setAttribute("potholeJson", potholeJson);
+
 		return "home";
 	}
 
-	
-	
 }
