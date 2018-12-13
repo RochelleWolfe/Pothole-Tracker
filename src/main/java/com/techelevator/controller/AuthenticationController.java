@@ -2,6 +2,8 @@ package com.techelevator.controller;
 
 
 
+import java.io.File;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,7 +69,7 @@ public class AuthenticationController {
 
 	@RequestMapping(path="/{currentUser}/reportPothole", method=RequestMethod.POST)
 	public String submitPotholeReport(@RequestParam String lat, @RequestParam String lng, 
-			@RequestParam String img, @RequestParam String streetAdd, @RequestParam int size,
+			@RequestParam File img, @RequestParam String streetAdd, @RequestParam int size,
 			HttpSession session ) {
 		Pothole newHole = new Pothole();
 		newHole.setLat(lat);

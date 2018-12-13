@@ -124,16 +124,15 @@
 					type="text" id="size" name="size" placeHolder="size in inches"
 					class="form-control" />
 			</div>
-			<!--  <div>
+			<div>
 				<label for="file">Upload an image of the pothole </label> <input
-					type="file" name="file" size="50" /> <br /> <input type="submit"
-					value="Upload File" />
-			</div> -->
-			<div class="form-group">
+					type="file" id="img" name="img" size="50" /> <br /> 
+			</div>
+			<!--  <div class="form-group">
 				<label for="size">img: </label> <input
 					type="text" id="img" name="img" placeHolder="img"
 					class="form-control" />
-			</div>
+			</div> -->
 			
 			
 			<button type="submit" class="btn btn-default" value="submit"> Submit</button>
