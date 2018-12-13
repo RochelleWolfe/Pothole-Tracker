@@ -37,5 +37,11 @@ INSERT into pothole (lat, long, img, street_add, size)
         values      (41.4156, -81.9235, 'abc', 28206, 4);
 INSERT into pothole (lat, long, img, street_add, size) 
         values      (41.3750, -81.9085, 'def' , 44555, 3);
+INSERT into pothole (lat, long, img, street_add, size) 
+        values      (41.502675, -81.639509, 'ghi' , 4567, 2);
+INSERT into pothole (lat, long, img, street_add, size) 
+        values      (41.503679,  -81.640754, 'jkl' , 4567, 5);
+INSERT into pothole (lat, long, img, street_add, size) 
+        values      (41.504681,  -81.639509, 'mno' , 4567, 1);
 
 COMMIT;

@@ -92,7 +92,7 @@
 <div class="row">
 	<div class="col-sm-4"></div>
 	<div class="col-sm-4">
-		<c:url var="formAction" value="/{userName}/reportPothole" />
+		<c:url var="formAction" value="/{currentUser}/reportPothole" />
 		<form method="POST" action="${formAction}">
 			<!--  <input type="hidden" name="destination" value="${param.destination}" />
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> -->
@@ -109,13 +109,13 @@
 					class="form-control" />
 			</div>
 				<div class="form-group">
-			<input type="text" id="lng"
+			<input type="text" id="lng" 
 					name="potholeLocation" placeHolder="lng"
 					class="form-control" />
 				</div>
 			<div class="form-group">
 				<label for="size">Enter the street name: </label> <input
-					type="text" id="streetAdd" name="streeAdd" placeHolder="Street Name"
+					type="text" id="streetAdd" name="streetAdd" placeHolder="Street Name"
 					class="form-control" />
 			</div>
 			<div class="form-group">
