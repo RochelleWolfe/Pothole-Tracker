@@ -24,7 +24,9 @@ public class HomeController {
 
 	@RequestMapping(path = "/{userName}", method = RequestMethod.GET)
 	public String displayUserHome(@PathVariable String userName, HttpSession session) {
-
+		
+		//session.setAttribute("currentUser", userName);
+		
 		List<Pothole> potholeList = potholeDao.getAllPotholes();
 
 		ObjectMapper objectMapper = new ObjectMapper();

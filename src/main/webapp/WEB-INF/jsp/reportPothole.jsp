@@ -94,8 +94,9 @@
 	<div class="col-sm-4">
 		<c:url var="formAction" value="/{currentUser}/reportPothole" />
 		<form method="POST" action="${formAction}">
-			<!--  <input type="hidden" name="destination" value="${param.destination}" />
-			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" /> -->
+		
+			 <!--  <input type="hidden" name="destination" value="${param.destination}" />-->
+			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 			<div class="form-group">
 				<!--  <label for="potholeLocation">Location search: </label>
 				<input id="searchTextField" type="text" size="50"
@@ -105,12 +106,12 @@
 					<input type="hidden"id="cityLng" name="cityLng" /> -->
 					<label for="potholeLocation">Location search: </label> 
 					<input type="text" id="lat"
-					name="potholeLocation" placeHolder="lat"
+					name="lat" placeHolder="lat"
 					class="form-control" />
 			</div>
 				<div class="form-group">
 			<input type="text" id="lng" 
-					name="potholeLocation" placeHolder="lng"
+					name="lng" placeHolder="lng"
 					class="form-control" />
 				</div>
 			<div class="form-group">

@@ -59,15 +59,16 @@ public class AuthenticationController {
 		}
 	}
 	
-	@RequestMapping(path="/{currentUser}reportPothole", method=RequestMethod.GET)
-	public String displayPotholeReoprt(@PathVariable String userName,
+	@RequestMapping(path="/{currentUser}/reportPothole", method=RequestMethod.GET)
+	public String displayPotholeReoprt(@PathVariable String currentUser,
 			HttpSession session) {
 		return "reportPothole";
 	}
 
-	@RequestMapping(path="/{currentUser}reportPothole", method=RequestMethod.POST)
+	@RequestMapping(path="/{currentUser}/reportPothole", method=RequestMethod.POST)
 	public String submitPotholeReport(@RequestParam String lat, @RequestParam String lng, 
-			@RequestParam String img, @RequestParam String streetAdd, @RequestParam int size) {
+			@RequestParam String img, @RequestParam String streetAdd, @RequestParam int size,
+			HttpSession session ) {
 		Pothole newHole = new Pothole();
 		newHole.setLat(lat);
 		newHole.setLng(lng);
@@ -75,7 +76,8 @@ public class AuthenticationController {
 		newHole.setStreetAdd(streetAdd);
 		newHole.setSize(size);
 		potholeDAO.save(newHole); 
-		return "redirect:/";
+		
+		return "redirect:/users/{currentUser}";
 	}
 
 
