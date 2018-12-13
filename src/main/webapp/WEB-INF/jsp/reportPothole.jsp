@@ -57,26 +57,30 @@
 		
 		
 		
-		google.maps.event.addListener(map, 'dblclick', function(event) {
-			placeMarkerAndPanTo(event.latLng, map);
-
-		});
 		
 		
+		var marker;
 		function placeMarkerAndPanTo(latLng, map) {
-			var marker = new google.maps.Marker({
+			  if ( marker ) {
+				    marker.setPosition(latLng);
+				    document.getElementById('lat').value = marker.getPosition().lat();
+					document.getElementById('lng').value = marker.getPosition().lng();
+				  } else {
+				marker = new google.maps.Marker({
 				position : latLng,
 				map : map,
-				customInfo : "Marker A"
 			});
-			map.panTo(latLng);
-			
+			map.panTo(latLng);		
 			document.getElementById('lat').value = marker.getPosition().lat();
 			document.getElementById('lng').value = marker.getPosition().lng();
 
-	
+				  }	
 
 		}
+		
+		google.maps.event.addListener(map, 'dblclick', function(event) {
+			placeMarkerAndPanTo(event.latLng, map);
+		});
     	
         }
 	
