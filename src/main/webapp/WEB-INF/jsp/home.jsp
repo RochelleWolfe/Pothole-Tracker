@@ -3,9 +3,6 @@
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
 
-
-
-
 <script
 	src=https://maps.googleapis.com/maps/api/js?key=AIzaSyAlbVrGqQ_thHgHh-A-XqEDL74Os5B-PbQ&callback=initMap></script>
 

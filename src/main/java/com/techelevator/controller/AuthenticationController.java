@@ -1,5 +1,7 @@
 package com.techelevator.controller;
 
+
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +12,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.techelevator.model.Pothole;
+import com.techelevator.model.PotholeDao;
 import com.techelevator.model.UserDAO;
+
 
 @Controller
 public class AuthenticationController {
 
+	@Autowired
 	private UserDAO userDAO;
+	
+	@Autowired
+	private PotholeDao potholeDAO;
 
 	@Autowired
 	public AuthenticationController(UserDAO userDAO) {
@@ -56,6 +65,18 @@ public class AuthenticationController {
 		return "reportPothole";
 	}
 
+	@RequestMapping(path="/{userName}/reportPothole", method=RequestMethod.POST)
+	public String submitPotholeReoprt(@RequestParam String lat, String lng, 
+			String img, String streetAdd, int size) {
+		Pothole newHole = new Pothole();
+		newHole.setLat(lat);
+		newHole.setLng(lng);
+		newHole.setImg(img);
+		newHole.setStreetAdd(streetAdd);
+		newHole.setSize(size);
+		potholeDAO.save(newHole);
+		return "redirect:/home";
+	}
 
 
 	@RequestMapping(path="/logout", method=RequestMethod.POST)
