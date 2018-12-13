@@ -10,9 +10,11 @@
 	// once dom is loaded calls initMap function
 	google.maps.event.addDomListener(window, 'load', initMap);
 	
-	
-	function initMap() {
 
+		
+	function initMap() {
+		
+	
 		// creates google.maps MAP object and assigns it to a div. Also defines center.
 		var map = new google.maps.Map(document.getElementById('map-canvas'), {
 			zoom : 12,
@@ -52,8 +54,12 @@
 	          });
 		    
 		});
-    
+    	
         }
+	
+
+	
+
 	
 </script>
 
@@ -61,33 +67,7 @@
 
 <div id="map-canvas" style="height: 500px; width: 700px; margin: auto;"></div>
 
-<!--  <script src="http://maps.googleapis.com/maps/api/js?libraries=places"
-	type="text/javascript"></script> -->
-	
 
-  <script type="text/javascript">
-	function initialize() {
-		var input = document.getElementById('searchTextField');
-		var autocomplete = new google.maps.places.Autocomplete(input);
-		google.maps.event
-				.addListener(
-						autocomplete,
-						'place_changed',
-						function() {
-							var place = autocomplete.getPlace();
-							document.getElementById('city2').value = place.name;
-							document.getElementById('cityLat').value = place.geometry.location
-									.lat();
-							document.getElementById('cityLng').value = place.geometry.location
-									.lng();
-							//alert("This function is working!");
-							//alert(place.name);
-							// alert(place.address_components[0].long_name);
-
-						});
-	}
-	google.maps.event.addDomListener(window, 'load', initialize);
-</script> 
 
 <div class="row">
 	<div class="col-sm-4"></div>
