@@ -27,7 +27,8 @@ CREATE TABLE pothole(
         street_add      varchar(50),
         size            int,
         depth           int,
-        severity        int
+        severity        int,
+        report_date     date        
 );
 
 CREATE TABLE user_potholes(
@@ -35,15 +36,15 @@ CREATE TABLE user_potholes(
         marker_id       varchar(32)
         );        
         
-INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity) 
-        values      (41.4156, -81.9235, 'abc', 28206,     4,      6,    1);
-INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity)
-        values      (41.3750, -81.9085, 'def' , 44555,    3,      1,    2);
-INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity)
-        values      (41.502675, -81.639509, 'ghi' , 4567, 2,       24,  3);
-INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity) 
-        values      (41.503679,  -81.640754, 'jkl' , 4567, 5,       12,    1);
-INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity)
-        values      (41.504681,  -81.639509, 'mno' , 4567, 1,      18,    2);
+INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity, report_date) 
+        values      (41.4156, -81.9235, 'abc', 28206,     4,      6,    1 ,      '2018-11-02');
+INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity, report_date)
+        values      (41.3750, -81.9085, 'def' , 44555,    3,      1,    2,      '2018-11-02');
+INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity, report_date)
+        values      (41.502675, -81.639509, 'ghi' , 4567, 2,       24,  3,       '2018-11-02');
+INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity, report_date) 
+        values      (41.503679,  -81.640754, 'jkl' , 4567, 5,       12,    1,    '2018-11-02');
+INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity, report_date)
+        values      (41.504681,  -81.639509, 'mno' , 4567, 1,      18,    2,     '2018-11-02' );
 
 COMMIT;

@@ -126,10 +126,35 @@
 					class="form-control" />
 			</div>
 			<div class="form-group">
-				<label for="size">Enter the size of the pothole: </label> <input
-					type="text" id="size" name="size" placeHolder="size in inches"
-					class="form-control" />
+				<label for="size">Select the Size of the Pothole: </label> 
+					<select type="text" id="size" name="size" class="form-control" >
+						<option value="12">Smaller than 12in</option>
+						<option value="24">Medium: 12-24in</option>
+						<option value="40">Larger than 24in</option>
+					</select>
 			</div>
+			
+	<!-- Depth Radio Buttons -->		
+			<div class="form-group"> 
+				<input type="radio" name="depth" value="2">
+					<c:url var="verySmallURL" value="/img/golfball.png" />
+					<img class="depth-img" id="very-Small-Depth" src="${verySmallURL}" alt="very shallow depth, 2 inches"/>
+					<br>
+				<input type="radio" name="depth" value="5">
+					<c:url var="smallURL" value="/img/Baseball.png" />
+					<img class="depth-img" id="Small-Depth" src="${smallURL}" alt="shallow depth, 5 inches"/>
+					<br>	
+				<input type="radio" name="depth" value="12">
+					<c:url var="mediumURL" value="/img/basketball.png" />
+					<img class="depth-img" id="Medium-Depth" src="${mediumURL}" alt="sizeable depth, 12 inches"/>
+					<br>	
+				<input type="radio" name="depth" value="24">
+					<c:url var="largeURL" value="/img/beachball.png" />
+					<img class="depth-img" id="Large-Depth" src="${largeURL}" alt="very deep, 24 inches"/>
+					<br>	
+					
+			</div>
+	<!-- End Depth Radio Buttons -->		
 			<div>
 				<label for="file">Upload an image of the pothole </label> <input
 					type="file" id="img" name="img" size="50" /> <br /> 
