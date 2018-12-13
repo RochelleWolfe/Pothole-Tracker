@@ -10,7 +10,7 @@
 	// once dom is loaded calls initMap function
 	google.maps.event.addDomListener(window, 'load', initMap);
 	
-
+	
 		
 	function initMap() {
 		
@@ -54,8 +54,34 @@
 	          });
 		    
 		});
+		
+		
+		
+		google.maps.event.addListener(map, 'dblclick', function(event) {
+			placeMarkerAndPanTo(event.latLng, map);
+
+		});
+		
+		
+		function placeMarkerAndPanTo(latLng, map) {
+			var marker = new google.maps.Marker({
+				position : latLng,
+				map : map,
+				customInfo : "Marker A"
+			});
+			map.panTo(latLng);
+			
+			document.getElementById('lat').value = marker.getPosition().lat();
+			document.getElementById('lng').value = marker.getPosition().lng();
+
+	
+
+		}
     	
         }
+	
+	
+
 	
 
 	
