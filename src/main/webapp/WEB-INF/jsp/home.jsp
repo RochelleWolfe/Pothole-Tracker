@@ -62,7 +62,6 @@
 
 
 
-<div id="map-canvas" style="height: 500px; width: 700px; margin: auto;"></div>
 <table>
 	<tr>
 		<th>Pothole</th>
@@ -77,6 +76,7 @@
 		</tr>
 	</c:forEach>
 </table>
+<div id="map-canvas" style="height: 500px; width: 700px; margin: auto;"></div>
 
 
 <c:import url="/WEB-INF/jsp/footer.jsp" />

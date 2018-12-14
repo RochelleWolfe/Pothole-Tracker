@@ -4,6 +4,7 @@ package com.techelevator.controller;
 
 import java.io.File;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -15,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techelevator.model.Pothole;
 import com.techelevator.model.PotholeDao;
 import com.techelevator.model.UserDAO;
@@ -35,7 +38,23 @@ public class AuthenticationController {
 	}
 	
 	@RequestMapping(path="/", method=RequestMethod.GET)
-	public String displayHome() {
+	public String displayHome(HttpSession session) {
+		
+		
+		
+		List<Pothole> potholeList = potholeDAO.getAllPotholes();
+
+		ObjectMapper objectMapper = new ObjectMapper();
+		try {
+			String json = objectMapper.writeValueAsString(potholeList);
+			session.setAttribute("potholeJson", json);
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+		session.setAttribute("potholeList", potholeList);
+
+		
+		
 		return "home";
 	}
 
