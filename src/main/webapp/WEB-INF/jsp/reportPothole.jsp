@@ -19,10 +19,7 @@
 		var map = new google.maps.Map(document.getElementById('map-canvas'), {
 			zoom : 12,
 			center : new google.maps.LatLng(41.505493, -81.681290)
-		});
-		
-		// stores data from json that will be displayed in info window
-		var contentString = '<div id="content">TEST</div>'
+		});		
 		
 		// gets json object from JAVA controller
 		let json = [];
@@ -33,6 +30,9 @@
 			
 			// creates google.maps object LatLng that holds latitude and longitude values for a marker
 			var position = new google.maps.LatLng(pothole.lat, pothole.lng);
+			
+			// stores data from json that will be displayed in info window
+			var contentString = '<div id="content">'+pothole.lat+'</div>';
 			
 			// defines infowindow for use during doubleclick event
 			var infoWindow = new google.maps.InfoWindow({
@@ -58,10 +58,37 @@
 		
 		
 		
+		function fetchAddress(latLng) {
+			let site = "https://maps.googleapis.com/maps/api/geocode/json?latlng=";
+			let lat = latLng.lat();
+			let lng = latLng.lng();
+			let key = "&key=AIzaSyAlbVrGqQ_thHgHh-A-XqEDL74Os5B-PbQ";
+			let url = site + lat + ',' + lng + key;
+			
+			// https://maps.googleapis.com/maps/api/geocode/json?latlng=41.4156,-81.9235&key=AIzaSyAlbVrGqQ_thHgHh-A-XqEDL74Os5B-PbQ
+			
+			fetch(url)
+				.then(response =>{
+					return response.json();
+				})
+				.then(json =>{
+					console.log(json);
+					console.log(json.results[0].formatted_address);
+					document.getElementById('streetAdd').value = json.results[0].formatted_address;
+				})
+		        .catch(err => {
+		            console.error(err);
+		        });
+			
+		}
+		
+		//Creates new marker on double click and passes data into input fields
 		
 		var marker;
 		function placeMarkerAndPanTo(latLng, map) {
+			
 			  if ( marker ) {
+				 	fetchAddress(latLng);
 				    marker.setPosition(latLng);
 				    document.getElementById('lat').value = marker.getPosition().lat();
 					document.getElementById('lng').value = marker.getPosition().lng();
@@ -70,21 +97,23 @@
 				position : latLng,
 				map : map,
 			});
-			map.panTo(latLng);		
+			fetchAddress(latLng);
+			map.panTo(latLng);	
 			document.getElementById('lat').value = marker.getPosition().lat();
 			document.getElementById('lng').value = marker.getPosition().lng();
-
 				  }	
-
 		}
-		
 		google.maps.event.addListener(map, 'dblclick', function(event) {
 			placeMarkerAndPanTo(event.latLng, map);
 		});
     	
-        }
+        
+
+		
 	
+	}
 	
+		
 
 	
 
@@ -104,8 +133,8 @@
 	<div class="col-sm-4">
 		<c:url var="formAction" value="/{currentUser}/reportPothole" />
 		<form method="POST" action="${formAction}">
-		
-			 <!--  <input type="hidden" name="destination" value="${param.destination}" />-->
+
+			<!--  <input type="hidden" name="destination" value="${param.destination}" />-->
 			<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
 			<div class="form-group">
 				<!--  <label for="potholeLocation">Location search: </label>
@@ -114,63 +143,62 @@
 				<input type="hidden" id="city2" name="city2" /> <input
 					type="hidden" id="cityLat" name="cityLat" /> 
 					<input type="hidden"id="cityLng" name="cityLng" /> -->
-					<label for="potholeLocation">Location search: </label> 
-					<input type="text" id="lat"
-					name="lat" placeHolder="lat"
-					class="form-control" />
-			</div>
-				<div class="form-group">
-			<input type="text" id="lng" 
-					name="lng" placeHolder="lng"
-					class="form-control" />
-				</div>
-			<div class="form-group">
-				<label for="size">Enter the street name: </label> <input
-					type="text" id="streetAdd" name="streetAdd" placeHolder="Street Name"
+				<label for="potholeLocation">Location search: </label> <input
+					type="text" id="lat" name="lat" placeHolder="lat"
 					class="form-control" />
 			</div>
 			<div class="form-group">
-				<label for="size">Select the Size of the Pothole: </label> 
-					<select type="text" id="size" name="size" class="form-control" >
-						<option value="12">Smaller than 12in</option>
-						<option value="24">Medium: 12-24in</option>
-						<option value="40">Larger than 24in</option>
-					</select>
+				<input type="text" id="lng" name="lng" placeHolder="lng"
+					class="form-control" />
 			</div>
-			
-	<!-- Depth Radio Buttons -->		
-			<div class="form-group"> 
+			<div class="form-group">
+				<label for="size">Enter the street name: </label> <input type="text"
+					id="streetAdd" name="streetAdd" placeHolder="Street Name"
+					class="form-control" />
+			</div>
+			<div class="form-group">
+				<label for="size">Select the Size of the Pothole: </label> <select
+					type="text" id="size" name="size" class="form-control">
+					<option value="12">Smaller than 12in</option>
+					<option value="24">Medium: 12-24in</option>
+					<option value="40">Larger than 24in</option>
+				</select>
+			</div>
+
+			<!-- Depth Radio Buttons -->
+			<div class="form-group">
 				<input type="radio" name="depth" value="2">
-					<c:url var="verySmallURL" value="/img/golfball.png" />
-					<img class="depth-img" id="very-Small-Depth" src="${verySmallURL}" alt="very shallow depth, 2 inches"/>
-					<br>
-				<input type="radio" name="depth" value="5">
-					<c:url var="smallURL" value="/img/Baseball.png" />
-					<img class="depth-img" id="Small-Depth" src="${smallURL}" alt="shallow depth, 5 inches"/>
-					<br>	
-				<input type="radio" name="depth" value="12">
-					<c:url var="mediumURL" value="/img/basketball.png" />
-					<img class="depth-img" id="Medium-Depth" src="${mediumURL}" alt="sizeable depth, 12 inches"/>
-					<br>	
-				<input type="radio" name="depth" value="24">
-					<c:url var="largeURL" value="/img/beachball.png" />
-					<img class="depth-img" id="Large-Depth" src="${largeURL}" alt="very deep, 24 inches"/>
-					<br>	
-					
+				<c:url var="verySmallURL" value="/img/golfball.png" />
+				<img class="depth-img" id="very-Small-Depth" src="${verySmallURL}"
+					alt="very shallow depth, 2 inches" /> <br> <input type="radio"
+					name="depth" value="5">
+				<c:url var="smallURL" value="/img/Baseball.png" />
+				<img class="depth-img" id="Small-Depth" src="${smallURL}"
+					alt="shallow depth, 5 inches" /> <br> <input type="radio"
+					name="depth" value="12">
+				<c:url var="mediumURL" value="/img/basketball.png" />
+				<img class="depth-img" id="Medium-Depth" src="${mediumURL}"
+					alt="sizeable depth, 12 inches" /> <br> <input type="radio"
+					name="depth" value="24">
+				<c:url var="largeURL" value="/img/beachball.png" />
+				<img class="depth-img" id="Large-Depth" src="${largeURL}"
+					alt="very deep, 24 inches" /> <br>
+
 			</div>
-	<!-- End Depth Radio Buttons -->		
+			<!-- End Depth Radio Buttons -->
 			<div>
 				<label for="file">Upload an image of the pothole </label> <input
-					type="file" id="img" name="img" size="50" /> <br /> 
+					type="file" id="img" name="img" size="50" /> <br />
 			</div>
 			<!--  <div class="form-group">
 				<label for="size">img: </label> <input
 					type="text" id="img" name="img" placeHolder="img"
 					class="form-control" />
 			</div> -->
-			
-			
-			<button type="submit" class="btn btn-default" value="submit"> Submit</button>
+
+
+			<button type="submit" class="btn btn-default" value="submit">
+				Submit</button>
 		</form>
 	</div>
 	<div class="col-sm-4"></div>
