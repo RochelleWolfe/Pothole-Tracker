@@ -11,22 +11,39 @@ public class Pothole {
 	private String		streetAdd;
 	private int			size;
 	private int			depth;
-	private int			severity;
 	private Date		reportDate;
+	private int			reportingCount;
+	private int			priority; 
+	
+	private int			severity= 0;
+	
+	private static final int 	GREEN_IS_UNDER_YELLOW_IS_OVER 	= 2000;
+	private static final int	YELLOW_IS_UNDER_RED_IS_OVER		= 80000;
+	
+	/* I am unsure about when to run setSeverity(), currently run with setDepth*/
 	
 	
+	
+	public int getReportingCount() {
+		return reportingCount;
+	}
+	public void setReportingCount(int reportingCount) {
+		this.reportingCount = reportingCount;
+	}
+	public int getPriority() {
+		return priority;
+	}
+	public void setPriority(int priority) {
+		this.priority = priority;
+	}
 	public int getDepth() {
 		return depth;
 	}
 	public void setDepth(int depth) {
 		this.depth = depth;
+		this.setSeverity(depth, size);		//the setSeverity is called here
 	}
-	public int getSeverity() {
-		return severity;
-	}
-	public void setSeverity(int severity) {
-		this.severity = severity;
-	}
+
 	public Date getReportDate() {
 		return reportDate;
 	}
@@ -69,6 +86,22 @@ public class Pothole {
 	public void setSize(int size) {
 		this.size = size;
 	}
+	public int getSeverity() {
+		return severity;
+	}
 	
+	public void setSeverity(int depth, int size) {
+		int area = depth * size;
+		if (area <= GREEN_IS_UNDER_YELLOW_IS_OVER) {
+			severity = 1;
+		} 
+		else if (area >= GREEN_IS_UNDER_YELLOW_IS_OVER && area < YELLOW_IS_UNDER_RED_IS_OVER ){
+			severity = 2;
+		}
+		else if (area >= YELLOW_IS_UNDER_RED_IS_OVER) {
+			severity = 3;
+		}
+		
+	}
 	
 }
