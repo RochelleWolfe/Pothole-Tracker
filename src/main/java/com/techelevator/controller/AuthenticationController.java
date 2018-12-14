@@ -3,6 +3,7 @@ package com.techelevator.controller;
 
 
 import java.io.File;
+import java.util.Date;
 
 import javax.servlet.http.HttpSession;
 
@@ -68,15 +69,21 @@ public class AuthenticationController {
 	}
 
 	@RequestMapping(path="/{currentUser}/reportPothole", method=RequestMethod.POST)
-	public String submitPotholeReport(@RequestParam String lat, @RequestParam String lng, 
-			@RequestParam String img, @RequestParam String streetAdd, @RequestParam int size,
-			HttpSession session ) {
+	public String submitPotholeReport(@RequestParam String lat, 
+										@RequestParam String lng, 
+										@RequestParam String img, 
+										@RequestParam String streetAdd, 
+										@RequestParam int size,
+										@RequestParam int depth,
+																HttpSession session ) {
 		Pothole newHole = new Pothole();
 		newHole.setLat(lat);
 		newHole.setLng(lng);
 		newHole.setImg(img);
 		newHole.setStreetAdd(streetAdd);
 		newHole.setSize(size);
+		newHole.setDepth(depth);
+		//newHole.setReportDate(java.time.LocalDate.now());
 		potholeDAO.save(newHole); 
 		
 		return "redirect:/users/{currentUser}";

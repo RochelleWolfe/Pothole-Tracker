@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.util.Date;
+
 public class Pothole {
 
 	private String		markerId;
@@ -8,8 +10,29 @@ public class Pothole {
 	private String		img;
 	private String		streetAdd;
 	private int			size;
+	private int			depth;
+	private int			severity;
+	private Date		reportDate;
 	
 	
+	public int getDepth() {
+		return depth;
+	}
+	public void setDepth(int depth) {
+		this.depth = depth;
+	}
+	public int getSeverity() {
+		return severity;
+	}
+	public void setSeverity(int severity) {
+		this.severity = severity;
+	}
+	public Date getReportDate() {
+		return reportDate;
+	}
+	public void setReportDate(Date reportDate) {
+		this.reportDate = reportDate;
+	}
 	public String getMarkerId() {
 		return markerId;
 	}

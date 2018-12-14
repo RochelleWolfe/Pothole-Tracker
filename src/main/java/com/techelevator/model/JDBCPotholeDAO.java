@@ -34,6 +34,8 @@ public class JDBCPotholeDAO implements PotholeDao {
 			pothole.setImg		(results.getString	("img"			));
 			pothole.setStreetAdd (results.getString	("street_add"	));
 			pothole.setSize		(results.getInt		("size"			));
+			pothole.setDepth	(results.getInt     ("depth"         ));
+			pothole.setReportDate(results.getDate	("report_date"   ));
 			allPotholes.add(pothole);
 		}
 		
@@ -43,8 +45,8 @@ public class JDBCPotholeDAO implements PotholeDao {
 	 //Saves information from pothole form into the database
 	public void save(Pothole pothole) {
 		//String id = getNextId(); //Used to set a unique id
-		String sqlInsertPothole = "INSERT INTO pothole(lat, long, img, street_add, size) VALUES (?,?,?,?,?)";
-		jdbcTemplate.update(sqlInsertPothole,pothole.getLat(), pothole.getLng(), pothole.getImg(), pothole.getStreetAdd(), pothole.getSize());
+		String sqlInsertPothole = "INSERT INTO pothole(lat, long, img, street_add, size, depth, report_date) VALUES (?,?,?,?,?,?,?)";
+		jdbcTemplate.update(sqlInsertPothole,pothole.getLat(), pothole.getLng(), pothole.getImg(), pothole.getStreetAdd(), pothole.getSize(), pothole.getDepth(), pothole.getReportDate());
 		//pothole.setMarkerId(id); //Used to set a unique id
 	}
 	
