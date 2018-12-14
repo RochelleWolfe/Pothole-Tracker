@@ -1,15 +1,15 @@
-#very-Small-Depth {
+#very-Small-Depth img {
 	width: 20px;
 }
 
-#Small-Depth {
+#Small-Depth img {
 	width: 40px;
 }
 
-#Medium-Depth {
+#Medium-Depth img {
 	width: 80px;
 }
 
-#Large-Depth {
+#Large-Depth img {
 	width: 160px;
 }

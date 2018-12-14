@@ -35,7 +35,9 @@ public class JDBCPotholeDAO implements PotholeDao {
 			pothole.setStreetAdd (results.getString	("street_add"	));
 			pothole.setSize		(results.getInt		("size"			));
 			pothole.setDepth	(results.getInt     ("depth"         ));
-			pothole.setReportDate(results.getDate	("report_date"   ));
+			//setDepth runs the setSeverity method
+			// Report Date is being generated as it enters the SQL in the save()
+			//pothole.setReportDate(results.getDate	("report_date"   ));
 			allPotholes.add(pothole);
 		}
 		
@@ -45,22 +47,23 @@ public class JDBCPotholeDAO implements PotholeDao {
 	 //Saves information from pothole form into the database
 	public void save(Pothole pothole) {
 		//String id = getNextId(); //Used to set a unique id
-		String sqlInsertPothole = "INSERT INTO pothole(lat, long, img, street_add, size, depth, report_date) VALUES (?,?,?,?,?,?,?)";
-		jdbcTemplate.update(sqlInsertPothole,pothole.getLat(), pothole.getLng(), pothole.getImg(), pothole.getStreetAdd(), pothole.getSize(), pothole.getDepth(), pothole.getReportDate());
+		String sqlInsertPothole = "INSERT INTO pothole(lat, 	long, 				img, 			street_add, 			size, 				depth, 			report_date, 	severity,					priority) VALUES (?,?,?,?,?,?,?,?,?)";
+		jdbcTemplate.update(sqlInsertPothole,pothole.getLat(), pothole.getLng(), pothole.getImg(), pothole.getStreetAdd(), pothole.getSize(), pothole.getDepth(), "NOW()",    pothole.getSeverity(), pothole.getPriority());
 		//pothole.setMarkerId(id); //Used to set a unique id
 	}
 	
 
-	private String getNextId() {
-		String sqlSelectNextId = "SELECT NEXTVAL('marker_id')";
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectNextId);
-		String id = null;
-		if(results.next()) {
-			id = results.getString(1);
-		} else {
-			throw new RuntimeException("Something strange happened, unable to select next forum post id from sequence");
-		}
-		return id;
-	}
+/* I don't think we need this method because the ID is set in SQL using serial*/	
+//	private String getNextId() {
+//		String sqlSelectNextId = "SELECT NEXTVAL('marker_id')";
+//		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectNextId);
+//		String id = null;
+//		if(results.next()) {
+//			id = results.getString(1);
+//		} else {
+//			throw new RuntimeException("Something strange happened, unable to select next forum post id from sequence");
+//		}
+//		return id;
+//	}
 	
 }
