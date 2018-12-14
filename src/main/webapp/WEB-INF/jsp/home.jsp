@@ -20,8 +20,6 @@
 			center : new google.maps.LatLng(41.505493, -81.681290)
 		});
 		
-		// stores data from json that will be displayed in info window
-		var contentString = '<div id="content">TEST</div>'
 		
 		// gets json object from JAVA controller
 		let json = [];
@@ -34,8 +32,12 @@
 			var position = new google.maps.LatLng(pothole.lat, pothole.lng);
 			
 			// defines infowindow for use during doubleclick event
+			var contentString = "<div id='info-window-content'><h2 id='pothole-severity' class='severity'>" +pothole.severity + "</h2> <h3 id='pothole-address'>" +pothole.streetAdd + "</h3><button id='pothole-counter-btn'>Is this your pothole???</button><span id='pothole-submissions'> " + pothole.reportingCount + "</span></div>";
+			
+			
 			var infoWindow = new google.maps.InfoWindow({
-				content:contentString
+				content: contentString
+			
 			});
 			// adds marker to map
 			var marker = new google.maps.Marker({

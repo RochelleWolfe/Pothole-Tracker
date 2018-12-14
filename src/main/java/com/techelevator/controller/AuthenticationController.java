@@ -86,6 +86,17 @@ public class AuthenticationController {
 			HttpSession session) {
 		return "reportPothole";
 	}
+	
+	
+	@RequestMapping(path="/{currentUser}/updatePothole", method=RequestMethod.POST)
+	public String updatePotholeReport(@PathVariable String currentUser, @RequestParam String markerId) {
+		Pothole thisHole = potholeDAO.getPotholeById(markerId);
+		
+		
+		potholeDAO.updateReportCount(thisHole);
+		return "redirect:/";
+		
+	}
 
 	@RequestMapping(path="/{currentUser}/reportPothole", method=RequestMethod.POST)
 	public String submitPotholeReport(@RequestParam String lat, 
@@ -105,7 +116,7 @@ public class AuthenticationController {
 		//newHole.setReportDate(java.time.LocalDate.now());
 		potholeDAO.save(newHole); 
 		
-		return "redirect:/users/{currentUser}";
+		return "redirect:/";
 	}
 
 

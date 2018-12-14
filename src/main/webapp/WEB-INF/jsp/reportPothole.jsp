@@ -32,7 +32,7 @@
 			var position = new google.maps.LatLng(pothole.lat, pothole.lng);
 			
 			// stores data from json that will be displayed in info window
-			var contentString = "<div id='info-window-content'><h2 id='pothole-severity' class='severity'>" +pothole.severity + "</h2> <h3 id='pothole-address'>" +pothole.streetAdd + "</h3><button id='pothole-counter-btn'>Is this your pothole???</button><span id='pothole-submissions'> " + pothole.reportingCount + "</span></div>";
+			var contentString = "<div id='info-window-content'><c:url var='formAction' value='/{currentUser}/updatePothole?markerId=" + pothole.markerId + "'/><h2 id='pothole-severity' class='severity'>" +pothole.severity + "</h2> <h3 id='pothole-address'>" +pothole.streetAdd + "</h3><form method='POST' action='${formAction}'><input type='hidden' name='CSRF_TOKEN' value='${CSRF_TOKEN}' /><button id='pothole-counter-btn'>Is this your pothole???</button></form><span id='pothole-submissions'> " + pothole.reportingCount + "</span></div>";
 			
 			// defines infowindow for use during doubleclick event
 			var infoWindow = new google.maps.InfoWindow({
