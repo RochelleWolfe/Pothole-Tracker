@@ -139,7 +139,7 @@
 			</div>
 			
 	<!-- Depth Radio Buttons -->		
-			<div class="form-group"> 
+			<div class="depth-img"> 
 				<input type="radio" name="depth" value="2">
 					<c:url var="verySmallURL" value="/img/golfball.png" />
 					<img class="depth-img" id="very-Small-Depth" src="${verySmallURL}" alt="very shallow depth, 2 inches"/>
