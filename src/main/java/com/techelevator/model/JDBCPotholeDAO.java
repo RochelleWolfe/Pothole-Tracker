@@ -66,4 +66,15 @@ public class JDBCPotholeDAO implements PotholeDao {
 //		return id;
 //	}
 	
+	public void updateReportCount(Pothole pothole) {
+		int updatedCount= pothole.getReportingCount() +1;
+		String sqlUpdateReportCount = "UPDATE pothole" + 
+									"SET report_count = " + updatedCount +
+									" WHERE marker_id = " + pothole.getMarkerId() +" ;" ;
+		jdbcTemplate.update(sqlUpdateReportCount);
+				
+	
+	}
+	
+	
 }
