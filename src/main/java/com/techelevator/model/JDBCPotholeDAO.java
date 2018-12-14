@@ -28,13 +28,7 @@ public class JDBCPotholeDAO implements PotholeDao {
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllPotholes);
 		while(results.next()) {
 			Pothole pothole = new Pothole();
-			pothole.setMarkerId	(results.getString	("marker_id"	));
-			pothole.setLat		(results.getString	("lat"			));
-			pothole.setLng		(results.getString	("long"			));
-			pothole.setImg		(results.getString	("img"			));
-			pothole.setStreetAdd (results.getString	("street_add"	));
-			pothole.setSize		(results.getInt		("size"			));
-			pothole.setDepth	(results.getInt     ("depth"         ));
+			populatePothole(results, pothole);
 			//setDepth runs the setSeverity method
 			// Report Date is being generated as it enters the SQL in the save()
 			//pothole.setReportDate(results.getDate	("report_date"   ));
@@ -42,6 +36,21 @@ public class JDBCPotholeDAO implements PotholeDao {
 		}
 		
 		return allPotholes;
+	}
+
+	/**
+	 * @param results
+	 * @param pothole
+	 */
+	private void populatePothole(SqlRowSet results, Pothole pothole) {
+		pothole.setMarkerId		(results.getString	("marker_id"	));
+		pothole.setLat			(results.getString	("lat"			));
+		pothole.setLng			(results.getString	("long"			));
+		pothole.setImg			(results.getString	("img"			));
+		pothole.setStreetAdd 	(results.getString	("street_add"	));
+		pothole.setSize			(results.getInt		("size"			));
+		pothole.setDepth		(results.getInt     ("depth"        ));
+		pothole.setReportingCount(results.getInt    ("report_count" ));
 	}
 	
 	 //Saves information from pothole form into the database
@@ -69,11 +78,22 @@ public class JDBCPotholeDAO implements PotholeDao {
 	public void updateReportCount(Pothole pothole) {
 		int updatedCount= pothole.getReportingCount() +1;
 		String sqlUpdateReportCount = "UPDATE pothole" + 
-									"SET report_count = " + updatedCount +
+									" SET report_count = " + updatedCount +
 									" WHERE marker_id = " + pothole.getMarkerId() +" ;" ;
 		jdbcTemplate.update(sqlUpdateReportCount);
 				
 	
+	}
+	
+	public Pothole getPotholeById(String id) {
+		Pothole foundPotHoleGlen = new Pothole();
+		String sqlFindPotById = "SELECT * FROM pothole WHERE marker_id = " + id;
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlFindPotById);
+		while(results.next()) {
+			populatePothole(results, foundPotHoleGlen);
+		}
+		return foundPotHoleGlen;
+				
 	}
 	
 	
