@@ -1,17 +1,21 @@
 
 #very-Small-Depth img {
 	width: 20px;
+	height: auto;
 }
 
 #Small-Depth img {
 	width: 40px;
+	height: auto;
 }
 
 #Medium-Depth img {
 	width: 80px;
+	height: auto;
+	
 }
 
 #Large-Depth img {
 	width: 160px;
+	height: auto;
 }
->>>>>>> cd27fb9c37570e9dbf402e3ba6b4d647d1a591df
