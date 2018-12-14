@@ -1,17 +1,20 @@
 
-#very-Small-Depth img {
+#very-Small-Depth {
 	width: 20px;
 }
 
-#Small-Depth img {
+#Small-Depth {
 	width: 40px;
 }
 
-#Medium-Depth img {
+#Medium-Depth {
 	width: 80px;
 }
 
-#Large-Depth img {
+#Large-Depth {
 	width: 160px;
 }
->>>>>>> cd27fb9c37570e9dbf402e3ba6b4d647d1a591df
+
+body{
+	background-color: red;
+}
