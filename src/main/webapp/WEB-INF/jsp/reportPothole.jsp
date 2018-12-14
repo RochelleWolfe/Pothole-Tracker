@@ -168,7 +168,6 @@
 
 			<!-- Depth Radio Buttons -->
 			<div class="form-group">
->>>>>>> cd27fb9c37570e9dbf402e3ba6b4d647d1a591df
 				<input type="radio" name="depth" value="2">
 				<c:url var="verySmallURL" value="/img/golfball.png" />
 				<img class="depth-img" id="very-Small-Depth" src="${verySmallURL}"
