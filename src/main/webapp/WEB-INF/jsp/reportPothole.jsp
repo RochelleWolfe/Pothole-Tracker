@@ -136,4 +136,5 @@
 <div id="map-canvas" style="height: 500px; width: 700px; margin: auto;"></div>
 
 
+
 <c:import url="/WEB-INF/jsp/footer.jsp" />

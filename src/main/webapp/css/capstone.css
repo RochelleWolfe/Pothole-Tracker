@@ -1,21 +1,26 @@
 
-#very-Small-Depth img {
+#very-Small-Depth {
 	width: 20px;
 	height: auto;
 }
 
-#Small-Depth img {
+#Small-Depth {
 	width: 40px;
 	height: auto;
 }
 
-#Medium-Depth img {
+#Medium-Depth {
 	width: 80px;
 	height: auto;
 	
 }
 
-#Large-Depth img {
+#Large-Depth {
 	width: 160px;
 	height: auto;
 }
+
+body{
+	background-color: red;
+}
+
