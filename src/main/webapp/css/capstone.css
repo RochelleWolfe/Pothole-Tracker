@@ -1,0 +1,26 @@
+
+#very-Small-Depth {
+	width: 20px;
+	height: auto;
+}
+
+#Small-Depth {
+	width: 40px;
+	height: auto;
+}
+
+#Medium-Depth {
+	width: 80px;
+	height: auto;
+	
+}
+
+#Large-Depth {
+	width: 160px;
+	height: auto;
+}
+
+body{
+	background-color: red;
+}
+
