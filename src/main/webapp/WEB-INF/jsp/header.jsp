@@ -45,8 +45,8 @@
 					<c:url var="homePageHref" value="/" />
 					<li><a href="${homePageHref}">Home</a></li>
 					<c:if test="${not empty currentUser}">
-						<c:url var="dashboardHref" value="/users/${currentUser}" />
-						<li><a href="${dashboardHref}">Private Messages</a></li>
+						<c:url var="potholeListHref" value="/${currentUser}/potholeList" />
+						<li><a href="${potholeListHref}">View list of current potholes</a></li>
 						<c:url var="reportPotholeHref" value="/${currentUser}/reportPothole" />
 						<li><a href="${reportPotholeHref}">Report a Pothole</a></li>
 						<c:url var="sentMessagesHref" value="/users/${currentUser}/messages" />

@@ -62,22 +62,6 @@
 	
 </script>
 
-
-
-<table>
-	<tr>
-		<th>Pothole</th>
-		<th>Size</th>
-		<th>Address</th>
-	</tr>
-	<c:forEach var="pothole" items="${potholeList}">
-		<tr>
-			<td>${pothole.markerId}</td>
-			<td>${pothole.size}</td>
-			<td>${pothole.streetAdd}</td>
-		</tr>
-	</c:forEach>
-</table>
 <div id="map-canvas" style="height: 500px; width: 700px; margin: auto;"></div>
 
 
