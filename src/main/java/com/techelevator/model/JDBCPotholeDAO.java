@@ -61,12 +61,13 @@ public class JDBCPotholeDAO implements PotholeDao {
 		pothole.setAdmin_aware	(results.getBoolean	("admin_aware"	));
 		pothole.setRepairing	(results.getBoolean	("is_repairing"	));
 		pothole.setDateSentRepair(results.getDate	("sent_for_repair"));
+		pothole.setUser			(results.getString	("user_reported"));
 	}
 	
 	 //Saves information from pothole form into the database
 	public void save(Pothole pothole) {
-		String sqlInsertPothole = "INSERT INTO pothole(lat, 	long, 				img, 			street_add, 			size, 				depth, 			report_date, 	severity,				priority, report_count,		 is_repairing,			admin_aware) VALUES (?,?,?,?,?,?, NOW(),?,?,1,false,false)";
-		jdbcTemplate.update(sqlInsertPothole,pothole.getLat(), pothole.getLng(), pothole.getImg(), pothole.getStreetAdd(), pothole.getSize(), pothole.getDepth(),    pothole.getSeverity(), pothole.getPriority()														);
+		String sqlInsertPothole = "INSERT INTO pothole(lat, 	long, 				img, 			street_add, 			size, 				depth, 			report_date, 	severity,				priority, report_count,		 is_repairing,			admin_aware,     user_reported) VALUES (?,?,?,?,?,?, NOW(),?,?,1,false,false,?)";
+		jdbcTemplate.update(sqlInsertPothole,pothole.getLat(), pothole.getLng(), pothole.getImg(), pothole.getStreetAdd(), pothole.getSize(), pothole.getDepth(),    pothole.getSeverity(), pothole.getPriority(), pothole.getUser()														);
 	}
 
 	
