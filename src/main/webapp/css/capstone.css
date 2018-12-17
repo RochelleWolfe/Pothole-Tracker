@@ -42,4 +42,27 @@ body{
 #Large-Depth {
 	width: 160px;
 	height: auto;
+<<<<<<< HEAD
 }
+=======
+}
+
+body{
+	background-color:white;
+}
+
+
+.info-window-address-severity-one {
+	border-bottom: 5px solid green;
+}
+.info-window-address-severity-two {
+	border-bottom: 5px solid yellow;
+}
+.info-window-address-severity-three {
+	border-bottom: 5px solid red;
+}
+
+
+
+
+>>>>>>> c7bec9183c5db90a64617acd8687d569683bb4f3

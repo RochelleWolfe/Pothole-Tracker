@@ -34,7 +34,7 @@ CREATE TABLE pothole(
         is_repairing    boolean,
         sent_for_repair Date,
         admin_aware     boolean,      
-        user_reported   int
+        user_reported   varchar(50)
 );
 
 CREATE TABLE user_potholes(

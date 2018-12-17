@@ -20,6 +20,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techelevator.model.Pothole;
 import com.techelevator.model.PotholeDao;
+import com.techelevator.model.User;
 import com.techelevator.model.UserDAO;
 
 
@@ -106,6 +107,9 @@ public class AuthenticationController {
 										@RequestParam int size,
 										@RequestParam int depth,
 																HttpSession session ) {
+		User currentUser = (User)session.getAttribute("currentUser");
+		String user = currentUser.getUserName();
+		
 		Pothole newHole = new Pothole();
 		newHole.setLat(lat);
 		newHole.setLng(lng);
@@ -113,6 +117,7 @@ public class AuthenticationController {
 		newHole.setStreetAdd(streetAdd);
 		newHole.setSize(size);
 		newHole.setDepth(depth);
+		newHole.setUser(user);
 		//newHole.setReportDate(java.time.LocalDate.now());
 		potholeDAO.save(newHole); 
 		
