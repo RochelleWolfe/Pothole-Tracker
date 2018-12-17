@@ -23,15 +23,20 @@ public class JDBCPotholeDAO implements PotholeDao {
 	
 	@Override //returns a list of pothole objects with their attributes populated from the table
 	public List<Pothole> getAllPotholes() {
+		String orderBy = "marker_id";
+		List<Pothole> allPotholes =sortAllPotholes(orderBy);
+		return allPotholes;
+	}
+	
+	public List<Pothole> sortAllPotholes(String orderBy) {
 		List<Pothole> allPotholes = new ArrayList<>();
-		String sqlSelectAllPotholes = "SELECT * FROM pothole";
+		String sqlSelectAllPotholes = "SELECT * FROM pothole ORDER BY "+ orderBy + ";";
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlSelectAllPotholes);
 		while(results.next()) {
 			Pothole pothole = new Pothole();
 			populatePothole(results, pothole);
 			//setDepth runs the setSeverity method
 			// Report Date is being generated as it enters the SQL in the save()
-			//pothole.setReportDate(results.getDate	("report_date"   ));
 			allPotholes.add(pothole);
 		}
 		
@@ -42,6 +47,7 @@ public class JDBCPotholeDAO implements PotholeDao {
 	 * @param results
 	 * @param pothole
 	 */
+	//Pothole from database
 	private void populatePothole(SqlRowSet results, Pothole pothole) {
 		pothole.setMarkerId		(results.getString	("marker_id"	));
 		pothole.setLat			(results.getString	("lat"			));
@@ -51,14 +57,16 @@ public class JDBCPotholeDAO implements PotholeDao {
 		pothole.setSize			(results.getInt		("size"			));
 		pothole.setDepth		(results.getInt     ("depth"        ));
 		pothole.setReportingCount(results.getInt    ("report_count" ));
-		pothole.setAdmin_aware	(false);
-		pothole.setRepairing	(false);
+		pothole.setReportDate	(results.getDate	("report_date" 	));
+		pothole.setAdmin_aware	(results.getBoolean	("admin_aware"	));
+		pothole.setRepairing	(results.getBoolean	("is_repairing"	));
+		pothole.setDateSentRepair(results.getDate	("sent_for_repair"));
 	}
 	
 	 //Saves information from pothole form into the database
 	public void save(Pothole pothole) {
-		String sqlInsertPothole = "INSERT INTO pothole(lat, 	long, 				img, 			street_add, 			size, 				depth, 			report_date, 	severity,				priority, report_count,		 is_repairing,			admin_aware) VALUES (?,?,?,?,?,?, NOW(),?,?,1,?,?)";
-		jdbcTemplate.update(sqlInsertPothole,pothole.getLat(), pothole.getLng(), pothole.getImg(), pothole.getStreetAdd(), pothole.getSize(), pothole.getDepth(),    pothole.getSeverity(), pothole.getPriority(),					pothole.isRepairing(),	pothole.isAdmin_aware()		);
+		String sqlInsertPothole = "INSERT INTO pothole(lat, 	long, 				img, 			street_add, 			size, 				depth, 			report_date, 	severity,				priority, report_count,		 is_repairing,			admin_aware) VALUES (?,?,?,?,?,?, NOW(),?,?,1,false,false)";
+		jdbcTemplate.update(sqlInsertPothole,pothole.getLat(), pothole.getLng(), pothole.getImg(), pothole.getStreetAdd(), pothole.getSize(), pothole.getDepth(),    pothole.getSeverity(), pothole.getPriority()														);
 	}
 
 	
@@ -73,14 +81,19 @@ public class JDBCPotholeDAO implements PotholeDao {
 	}
 	
 	public Pothole getPotholeById(String id) {
-		Pothole foundPotHoleGlen = new Pothole();
+		Pothole pothole = new Pothole();
 		String sqlFindPotById = "SELECT * FROM pothole WHERE marker_id = " + id;
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlFindPotById);
 		while(results.next()) {
-			populatePothole(results, foundPotHoleGlen);
+			populatePothole(results, pothole);
 		}
-		return foundPotHoleGlen;
-				
+		return pothole;
+					
+	}
+	
+	public void deletePothole(String id) {
+		String sqlDeletePothole = "Delete * FROM pothole WHERE marker_id = " + id;
+		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlDeletePothole);
 	}
 	
 	
