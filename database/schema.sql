@@ -30,7 +30,10 @@ CREATE TABLE pothole(
         severity        int,
         report_date     Date,
         report_count    int,
-        priority        int        
+        priority        int,
+        is_repairing    boolean,
+        sent_for_repair Date,
+        admin_aware     boolean      
 );
 
 CREATE TABLE user_potholes(

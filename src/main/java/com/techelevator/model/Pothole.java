@@ -17,8 +17,8 @@ public class Pothole {
 	
 	private int			severity= 0;
 	
-	private static final int 	GREEN_IS_UNDER_YELLOW_IS_OVER 	= 2000;
-	private static final int	YELLOW_IS_UNDER_RED_IS_OVER		= 80000;
+	private static final int 	GREEN_IS_UNDER_YELLOW_IS_OVER 	= 200;
+	private static final int	YELLOW_IS_UNDER_RED_IS_OVER		= 700;
 	
 	/* I am unsure about when to run setSeverity(), currently run with setDepth*/
 	
