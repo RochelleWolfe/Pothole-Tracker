@@ -25,13 +25,16 @@ body{
 }
 
 
-.info-window-severity-one {
-	background-color: green;
+.info-window-address-severity-one {
+	border-bottom: 5px solid green;
 }
-.info-window-severity-two {
-	background-color: yellow;
+.info-window-address-severity-two {
+	border-bottom: 5px solid yellow;
 }
-.info-window-severity-three {
-	background-color: red;
+.info-window-address-severity-three {
+	border-bottom: 5px solid red;
 }
+
+
+
 
