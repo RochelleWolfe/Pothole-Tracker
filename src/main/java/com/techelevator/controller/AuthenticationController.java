@@ -118,6 +118,11 @@ public class AuthenticationController {
 		
 		return "redirect:/";
 	}
+	
+	@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.GET)
+	public String displayListOfPotholes() {
+		return "userPotholeList";
+	}
 
 
 	@RequestMapping(path="/logout", method=RequestMethod.POST)
