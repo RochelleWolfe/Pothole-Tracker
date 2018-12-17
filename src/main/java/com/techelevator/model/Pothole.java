@@ -16,9 +16,12 @@ public class Pothole {
 	private int			priority; 
 	
 	private int			severity= 0;
+	private boolean		isRepairing;
+	private Date		dateSentRepair;
+	private boolean		admin_aware;
 	
-	private static final int 	GREEN_IS_UNDER_YELLOW_IS_OVER 	= 2000;
-	private static final int	YELLOW_IS_UNDER_RED_IS_OVER		= 80000;
+	private static final int 	GREEN_IS_UNDER_YELLOW_IS_OVER 	= 200;
+	private static final int	YELLOW_IS_UNDER_RED_IS_OVER		= 700;
 	
 	/* I am unsure about when to run setSeverity(), currently run with setDepth*/
 	
@@ -86,6 +89,26 @@ public class Pothole {
 	public void setSize(int size) {
 		this.size = size;
 	}
+	public boolean isRepairing() {
+		return isRepairing;
+	}
+	public void setRepairing(boolean isRepairing) {
+		this.isRepairing = isRepairing;
+	}
+	public Date getDateSentRepair() {
+		return dateSentRepair;
+	}
+	public void setDateSentRepair(Date dateSentRepair) {
+		this.dateSentRepair = dateSentRepair;
+	}
+	public boolean isAdmin_aware() {
+		return admin_aware;
+	}
+	public void setAdmin_aware(boolean admin_aware) {
+		this.admin_aware = admin_aware;
+	}
+	
+	
 	public int getSeverity() {
 		return severity;
 	}

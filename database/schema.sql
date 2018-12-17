@@ -30,11 +30,15 @@ CREATE TABLE pothole(
         severity        int,
         report_date     Date,
         report_count    int,
-        priority        int        
+        priority        int,
+        is_repairing    boolean,
+        sent_for_repair Date,
+        admin_aware     boolean,      
+        user_reported   int
 );
 
 CREATE TABLE user_potholes(
-        user_id         SERIAL,
+        user_id         int,
         marker_id       varchar(32)
         );        
         
@@ -49,4 +53,7 @@ INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity,
 INSERT into pothole (lat,       long,   img,  street_add, size, depth, severity, report_date,  report_count, priority)
         values      (41.504681,  -81.639509, 'mno' , 4567, 1,      18,    2,     '2018-11-02' , 1,              1);
 
+
+INSERT into app_user (user_name,      password,              role,   salt)
+        values       ('testadmin',  'PasswordPassword',     'admin', 'salt');   
 COMMIT;
