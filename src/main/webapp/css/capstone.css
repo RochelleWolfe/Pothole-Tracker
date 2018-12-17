@@ -24,3 +24,14 @@ body{
 	background-color:white;
 }
 
+
+.info-window-severity-one {
+	background-color: green;
+}
+.info-window-severity-two {
+	background-color: yellow;
+}
+.info-window-severity-three {
+	background-color: red;
+}
+

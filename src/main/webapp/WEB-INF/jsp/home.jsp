@@ -32,13 +32,27 @@
 			var position = new google.maps.LatLng(pothole.lat, pothole.lng);
 			
 			// defines infowindow for use during doubleclick event
-			var contentString = "<div id='info-window-content'><h2 id='pothole-severity' class='severity'>" +pothole.severity + "</h2> <h3 id='pothole-address'>" +pothole.streetAdd + "</h3><button id='pothole-counter-btn'>Is this your pothole???</button><span id='pothole-submissions'> " + pothole.reportingCount + "</span></div>";
-			
+			var contentString =     "<div id='info-window-content'><h2 id='pothole-severity' class='severity'>" + pothole.severity + "</h2> <h3 id='pothole-address'>" + pothole.streetAdd + "</h3><h4 id='pothole-report-date'>This pothole was reported on " + pothole.reportDate + "</h4><h4 id='pothole-status'>The city is working on this pothole " + pothole.repairing + "</h4><span id='pothole-submissions'> This pothole has been reported " + pothole.reportingCount + " times</span></div>";
 			
 			var infoWindow = new google.maps.InfoWindow({
 				content: contentString
-			
 			});
+			infoWindow.open();
+			// changes the stlying based on severity
+			let window = document.getElementById('info-window-content');
+	//		switch(pothole.severity) {
+	//		  case 1:
+	//		    window.classList.add('info-window-severity-one')
+	//		    break;
+	//		  case 2:
+	//			  window.classList.add('info-window-severity-two')
+	//		    break;
+	//		  case 3:
+	//			  window.classList.add('info-window-severity-three')
+	//			break;
+	//		}
+			
+			
 			// adds marker to map
 			var marker = new google.maps.Marker({
 				position: position,
