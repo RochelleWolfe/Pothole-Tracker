@@ -56,6 +56,10 @@ INSERT into pothole (lat,       long, street_add, size, depth, severity, report_
 
 
 
-INSERT into app_user (user_name,      password,              role,   salt)
-        values       ('testadmin',  'PasswordPassword',     'admin', 'salt');   
+INSERT into app_user (user_name,      password,                  role,          salt)
+        values       ('Glen',      'y8i5ywLfHE8mlK3N5V8lkA==',     'admin',     'CwDYMBc84B4A7LO4qrWbDQQ7elwa+/J+YkSxaC3e1vkcRmgWoxWE7Ea5pGZcK52su3r8mA/8K3nAS9xXaCNGTSNxamlgRbf2Rrai6KBUvORwLTlrEjso/D1PD/vCwHi/SuGWa2RMl8d01tbHKZe3TAYOb+8eiit4peQD6pSAvgk=');  
+        
+INSERT into app_user (user_name,      password,                   role,         salt)
+        values       ('testadmin',  'y8i5ywLfHE8mlK3N5V8lkA==',     'admin',      'CwDYMBc84B4A7LO4qrWbDQQ7elwa+/J+YkSxaC3e1vkcRmgWoxWE7Ea5pGZcK52su3r8mA/8K3nAS9xXaCNGTSNxamlgRbf2Rrai6KBUvORwLTlrEjso/D1PD/vCwHi/SuGWa2RMl8d01tbHKZe3TAYOb+8eiit4peQD6pSAvgk='); 
+         
 COMMIT;
