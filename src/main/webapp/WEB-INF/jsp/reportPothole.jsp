@@ -18,8 +18,348 @@
 		// creates google.maps MAP object and assigns it to a div. Also defines center.
 		var map = new google.maps.Map(document.getElementById('map-canvas'), {
 			zoom : 12,
-			center : new google.maps.LatLng(41.505493, -81.681290)
-		});		
+			center : new google.maps.LatLng(41.505493, -81.681290),
+			
+		//A customized style using https://mapstyle.withgoogle.com/	
+	          styles: [
+	        	  
+//This is the style I want but isn't working	
+
+						/* {"elementType": "geometry","stylers": [{ "color": "#f5f5f5"
+		        		  	}]},
+		        		  {"elementType": "labels.icon", "stylers": [{"visibility": "off"
+		        		      }]},
+		        		  {
+		        		    "elementType": "labels.text.fill","stylers": [{"color": "#616161"
+		        		      }]},
+		        		  {
+		        		    "elementType": "labels.text.stroke","stylers": [{"color": "#f5f5f5"
+		        		      }]},
+		        		  {
+		        		    "featureType": "administrative.land_parcel","stylers": [{"visibility": "off"
+		        		      } ]},
+		        		  {
+		        		    "featureType": "administrative.land_parcel","elementType": "labels.text.fill","stylers": [{
+		        		        "color": "#bdbdbd"
+		        		        }]},
+		        		  {
+		        		    "featureType": "landscape","stylers": [{
+		        		        "color": "#bbbbbb"
+		        		      }]},
+		        		  {
+		        		    "featureType": "poi","elementType": "geometry", "stylers": [{
+		        		        "color": "#eeeeee"
+		        		      },
+		        		      {"visibility": "off"
+		        		      }]},
+		        		  {
+		        		    "featureType": "poi","elementType": "labels.text","stylers": [{
+		        		        "visibility": "off"
+		        		      }]},
+		        		  {
+		        		    "featureType": "poi","elementType": "labels.text.fill",
+		        		    "stylers": [{
+		        		        "color": "#757575"
+		        		      }]},
+		        		  {
+		        		    "featureType": "poi.business","stylers": [{"visibility": "off"
+		        		      }]},
+		        		  {
+		        		    "featureType": "poi.park", "elementType": "geometry","stylers": [
+		        		      {
+		        		        "color": "#e5e5e5"},
+		        		      {
+		        		        "visibility": "off"
+		        		      }]},
+		        		  {
+		        		    "featureType": "poi.park","elementType": "labels.text.fill",
+		        		    "stylers": [{"color": "#9e9e9e"
+		        		      }]},
+		        		  {
+		        		    "featureType": "road","elementType": "geometry",
+		        		    "stylers": [{"color": "#ffffff"
+		        		      }]},
+		        		  {
+		        		    "featureType": "road","elementType": "labels",
+		        		    "stylers": [{ "visibility": "off"}
+		        		    ]},
+		        		  {
+		        		    "featureType": "road","elementType": "labels.icon",
+		        		    "stylers": [{ "visibility": "off"
+		        		      }]},
+		        		  {
+		        		    "featureType": "road.arterial", "elementType": "labels.text.fill",
+		        		    "stylers": [{"color": "#757575"
+		        		      }]},
+		        		  {
+		        		    "featureType": "road.highway","elementType": "geometry",
+		        		    "stylers": [ {"color": "#dadada"
+		        		      }]},
+		        		  {
+		        		    "featureType": "road.highway", "elementType": "labels.text.fill",
+		        		    "stylers": [{"color": "#616161"
+		        		      }]},
+		        		  {
+		        		    "featureType": "road.local", "elementType": "labels.text.fill",
+		        		    "stylers": [{"color": "#9e9e9e"
+		        		    	}]},
+		        		  {
+		        		    "featureType": "transit","stylers": [{"visibility": "off"
+		        		      }]},
+		        		  {
+		        		    "featureType": "transit.line","elementType": "geometry",
+		        		    "stylers": [ { "color": "#e5e5e5"
+		        		      } ] },
+		        		  {
+		        		    "featureType": "transit.station","elementType": "geometry",
+		        		    "stylers": [ {
+		        		        "color": "#eeeeee"
+		        		      }] },
+		        		  {
+		        		    "featureType": "water","elementType": "geometry",
+		        		    "stylers": [{"color": "#393939"
+		        		      }]},
+		        		  {
+		        		    "featureType": "water", "elementType": "labels.text",
+		        		    "stylers": [ {
+		        		        "visibility": "off"
+		        		      }] },
+		        		  {
+		        		    "featureType": "water","elementType": "labels.text.fill",
+		        		    "stylers": [ { "color": "#9e9e9e"
+		        		      }] }]  */
+
+//This is where I started hand-typing
+	        /*		  		{elementType: 'geometry', stylers: [{color: '#f5f5f5'}]},
+	        	            {elementType: 'labels.icon', stylers: [{"visibility":"off"}]},
+	        	            {elementType: 'labels.text.fill', stylers: [{color: '#616161'}]},
+	        	            {elementType: 'labels.text.stroke', stylers: [{color:'#f5f5f5'}]},
+	        	            {
+	        	            	featureType: 'administrative.land_parcel', stylers: [{visibility:off}]},
+	        	            	{}*/
+	        	            	//was hand-typing up to this point	            	
+	        	            	
+//This is the style that IS working	   
+			          
+            {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
+            {elementType: 'labels.text.fill', stylers: [{color: '#746855'}]},
+            {
+              featureType: 'administrative.locality',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'geometry',
+              stylers: [{color: '#263c3f'}]
+            },
+            {
+              featureType: 'poi.park',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#6b9a76'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry',
+              stylers: [{color: '#38414e'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#212a37'}]
+            },
+            {
+              featureType: 'road',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#9ca5b3'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry',
+              stylers: [{color: '#746855'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'geometry.stroke',
+              stylers: [{color: '#1f2835'}]
+            },
+            {
+              featureType: 'road.highway',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#f3d19c'}]
+            },
+            {
+              featureType: 'transit',
+              elementType: 'geometry',
+              stylers: [{color: '#2f3948'}]
+            },
+            {
+              featureType: 'transit.station',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#d59563'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'geometry',
+              stylers: [{color: '#17263c'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.fill',
+              stylers: [{color: '#515c6d'}]
+            },
+            {
+              featureType: 'water',
+              elementType: 'labels.text.stroke',
+              stylers: [{color: '#17263c'}]
+            }
+          ]
+
+
+
+	          });	///Do not delete this line, part of program not of copied-style
+
+
+//This is copied straight from snazzymaps.com
+//Says it will only work with JS map, not with embed map, which do we have?
+/*	        	  [
+    {
+        "featureType": "administrative",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": "-100"
+            }
+        ]
+    },
+    {
+        "featureType": "administrative.province",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": 65
+            },
+            {
+                "visibility": "on"
+            }
+        ]
+    },
+    {
+        "featureType": "poi",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "lightness": "50"
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": "-100"
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "all",
+        "stylers": [
+            {
+                "lightness": "30"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "all",
+        "stylers": [
+            {
+                "lightness": "40"
+            }
+        ]
+    },
+    {
+        "featureType": "transit",
+        "elementType": "all",
+        "stylers": [
+            {
+                "saturation": -100
+            },
+            {
+                "visibility": "simplified"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "hue": "#ffff00"
+            },
+            {
+                "lightness": -25
+            },
+            {
+                "saturation": -97
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "lightness": -25
+            },
+            {
+                "saturation": -100
+            }
+        ]
+    }
+]
+	        		      
+*/	        		      
+	        		      
+	        		      
+			
+		
+		
 		
 		// gets json object from JAVA controller
 		let json = [];
@@ -133,8 +473,8 @@
 </script>
 
 
-
-<div id="map-canvas" style="height: 500px; width: 700px; margin: auto;"></div>
+<!-- This is the literal Map, very important -->
+<div id="map-canvas" style="height: 600px; width: 1150px; margin: 3px;"></div>
 
 
 

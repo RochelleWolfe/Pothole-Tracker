@@ -52,7 +52,7 @@ public class JDBCPotholeDAO implements PotholeDao {
 		pothole.setMarkerId		(results.getString	("marker_id"	));
 		pothole.setLat			(results.getString	("lat"			));
 		pothole.setLng			(results.getString	("long"			));
-		pothole.setImg			(results.getString	("img"			));
+		//pothole.setImg			(results.getString	("img"			));
 		pothole.setStreetAdd 	(results.getString	("street_add"	));
 		pothole.setSize			(results.getInt		("size"			));
 		pothole.setDepth		(results.getInt     ("depth"        ));
@@ -66,8 +66,8 @@ public class JDBCPotholeDAO implements PotholeDao {
 	
 	 //Saves information from pothole form into the database
 	public void save(Pothole pothole) {
-		String sqlInsertPothole = "INSERT INTO pothole(lat, 	long, 				img, 			street_add, 			size, 				depth, 			report_date, 	severity,				priority, report_count,		 is_repairing,			admin_aware,     user_reported) VALUES (?,?,?,?,?,?, NOW(),?,?,1,false,false,?)";
-		jdbcTemplate.update(sqlInsertPothole,pothole.getLat(), pothole.getLng(), pothole.getImg(), pothole.getStreetAdd(), pothole.getSize(), pothole.getDepth(),    pothole.getSeverity(), pothole.getPriority(), pothole.getUser()														);
+		String sqlInsertPothole = "INSERT INTO pothole(lat, 	long, 				 	street_add, 			size, 				depth, 			report_date, 		severity,				priority, 		report_count,		 is_repairing,			admin_aware,     user_reported) VALUES (?,?,?,?,?, NOW(),?,?,1,false,false,?)";
+		jdbcTemplate.update(sqlInsertPothole,pothole.getLat(), pothole.getLng(), pothole.getStreetAdd(), pothole.getSize(), pothole.getDepth(),  				  pothole.getSeverity(), pothole.getPriority(), pothole.getUser()														);
 	}
 
 	
