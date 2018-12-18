@@ -18,7 +18,7 @@ body{
 	border-bottom: 5px solid red;
 }
 						
-							<!--Report a Pothole Form-->
+							<!--Report a Pothole Form -->
 #report-a-pothole-form {
 	width: 100%;
 }
@@ -45,6 +45,41 @@ body{
 #Large-Depth {
 	width: 160px;
 	height: auto;
+}
+
+								<!-- pothole table style -->
+
+.userPotholeList {
+  border-collapse: collapse;
+  border: 1px solid black;
+
+}
+
+.userPotHoleList, th {
+	padding: 2em;
+	border: 1px solid black;
+	
+}
+
+.userPotholeList, td, th {
+	text-align: center;
+	table-layout: fixed ;
+	width: 100% ;
+}
+
+.userPotHoleList, tr:nth-child(even){
+  background-color: #96a3a5;
+  color: #fff;
+}
+
+
+.userPotholeList, td, tr {
+  padding: 15px;
+  border: 1px solid black;
+}
+
+
+
 
 
 
