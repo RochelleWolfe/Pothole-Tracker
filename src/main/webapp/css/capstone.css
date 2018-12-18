@@ -6,7 +6,7 @@ body{
 
 
 
-							<!--Pothole Info Window -->
+								<!--Pothole Info Window -->
 
 .info-window-address-severity-one {
 	border-bottom: 5px solid green;
@@ -18,7 +18,7 @@ body{
 	border-bottom: 5px solid red;
 }
 						
-							<!--Report a Pothole Form -->
+								<!--Report a Pothole Form -->
 #report-a-pothole-form {
 	width: 100%;
 }
@@ -46,6 +46,56 @@ body{
 	width: 160px;
 	height: auto;
 }
+							<!-- Report a Pothole Grid -->
+							/*    Ineffective							
+#form-address-user-input{
+	grid-area: address;
+}							
+#size {
+	grid-area: size;
+}							
+#very-shallow {
+	grid-area:vs-button;
+}						
+#very-Small-Depth {
+	grid-area: vs-img;
+}	
+#shallow {
+	grid-area: s-button;
+}
+#Small-Depth {
+	grid-area: s-img;
+}
+#medium-deep {
+	grid-area: m-button;
+}
+#Medium-Depth {
+	grid-area: m-img;
+}
+#very-deep {
+	grid-area: lg-button;
+}
+#Large-Depth {
+	grid-area: lg-img;
+}
+#depth-radios button {
+	grid-area: submit;
+}
+							
+							
+#report-a-pothole-form{
+	display: grid;
+	grid-template-columns: 1fr 3fr 3fr 1fr;
+	grid-template-areas:
+		". address	 	address 	."
+		". size 		size		."
+		". vs-button	vs-img		."
+		". s-button		s-img		."
+		". m-button		m-img		."
+		". lg-button	lg-img		."
+		". submit		submit		."
+}						
+*/
 
 								<!-- pothole table style -->
 
@@ -83,4 +133,4 @@ body{
 
 
 
-						<!--Map Styling -->
+						
