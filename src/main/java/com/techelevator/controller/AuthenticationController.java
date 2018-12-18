@@ -20,6 +20,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.techelevator.model.Pothole;
 import com.techelevator.model.PotholeDao;
+import com.techelevator.model.User;
 import com.techelevator.model.UserDAO;
 
 
@@ -122,6 +123,30 @@ public class AuthenticationController {
 	@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.GET)
 	public String displayListOfPotholes() {
 		return "userPotholeList";
+	}
+	
+	@RequestMapping(path="/{currentUser}/adminPotholeList", method=RequestMethod.GET)
+	public String displayListOfPotholesAdmin(@PathVariable String currentUser, @RequestParam String role) {
+		User newUser = new User();
+		String admin = null;
+		if(newUser.getRole() == admin) {
+			return "adminPotholeList";
+		}else {
+		
+		return "adminPotholeList";
+		}
+	}
+	
+	@RequestMapping(path="/{currentUser}/adminPotholeList", method=RequestMethod.POST)
+	public String submitListOfPotholesAdmin(@PathVariable String currentUser, @RequestParam String role) {
+		User newUser = new User();
+		String admin = null;
+		if(newUser.getRole() == admin) {
+			return "adminPotholeList";
+		}else {
+		
+		return "redirect:/adminPotholeList";
+		}
 	}
 
 
