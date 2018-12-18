@@ -11,7 +11,6 @@
 	google.maps.event.addDomListener(window, 'load', initMap);
 	
 	
-		
 	function initMap() {
 		
 	
@@ -244,6 +243,9 @@
        
 	}
 	
+	
+
+	
 
 	
 </script>
@@ -251,6 +253,42 @@
 
 <!-- This is the literal Map, very important -->
 <div id="map-canvas" style="height: 600px; width: 1150px; margin: 3px;"></div>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Double Click Anywhere to Start a Pothole Submission</p>
+  </div>
+
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('myModal');
+
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+//opens the modal
+  modal.style.display = "block";
+
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+</script>
 
 
 
