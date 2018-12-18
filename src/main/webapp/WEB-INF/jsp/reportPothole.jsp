@@ -146,9 +146,24 @@
 			// creates google.maps object LatLng that holds latitude and longitude values for a marker
 			var position = new google.maps.LatLng(pothole.lat, pothole.lng);
 			
-			// stores data from json that will be displayed in info window
-			var contentString = "<div id='info-window-content'><c:url var='formAction' value='/{currentUser}/updatePothole?markerId=" + pothole.markerId + "'/><h2 id='pothole-severity' class='severity'>" +pothole.severity + "</h2> <h3 id='pothole-address'>" +pothole.streetAdd + "</h3><form method='POST' action='${formAction}'><input type='hidden' name='CSRF_TOKEN' value='${CSRF_TOKEN}' /><button id='pothole-counter-btn'>Is this your pothole???</button></form><span id='pothole-submissions'> " + pothole.reportingCount + "</span></div>";
 			
+			let severityStringAddress = "";
+			switch(pothole.severity) {
+			  case 1:
+			    severityStringAddress = 'info-window-address-severity-one';
+			    break;
+			  case 2:
+				  severityStringAddress = 'info-window-address-severity-two';
+			    break;
+			  case 3:
+				  severityStringAddress = 'info-window-address-severity-three';
+				break;
+			}
+			
+			// stores data from json that will be displayed in info window
+			//var contentString = "<div id='info-window-content'><c:url var='formAction' value='/{currentUser}/updatePothole?markerId=" + pothole.markerId + "'/><h2 id='pothole-severity' class='"+ severityStringAddress + "'>" +pothole.severity + "</h2> <h3 id='pothole-address'>" +pothole.streetAdd + "</h3><form method='POST' action='${formAction}'><input type='hidden' name='CSRF_TOKEN' value='${CSRF_TOKEN}' /><button id='pothole-counter-btn'>Is this your pothole???</button></form><span id='pothole-submissions'> " + pothole.reportingCount + "</span></div>";
+			var contentString =     "<div id='info-window-content'><c:url var='formAction' value='/{currentUser}/updatePothole?markerId=" + pothole.markerId + "'/></h2> <h3 id='pothole-address' class='" + severityStringAddress + "'>" + pothole.streetAdd + "</h3><h4 id='pothole-report-date'>This pothole was reported on " + pothole.reportDate + "</h4><h4 id='pothole-status'>The city is working on this pothole " + pothole.repairing + "</h4><form method='POST' action='${formAction}'><input type='hidden' name='CSRF_TOKEN' value='${CSRF_TOKEN}' /><button id='pothole-counter-btn'>Click to Re-Submit</button></form><span id='pothole-submissions'> " + pothole.reportingCount + "</span></div>";
+
 			// defines infowindow for use during doubleclick event
 			var infoWindow = new google.maps.InfoWindow({
 				content:contentString

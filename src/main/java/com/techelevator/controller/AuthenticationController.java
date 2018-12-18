@@ -162,10 +162,10 @@ public class AuthenticationController {
 		return "redirect:/{currentUser}/potholeList";
 	}
 	
-	@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.POST)
-	public String deletePotholes() {
-		
-	}
+//	@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.POST)
+//	public String deletePotholes() {
+//		
+//	}
 	
 
 
