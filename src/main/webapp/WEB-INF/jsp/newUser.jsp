@@ -62,13 +62,6 @@
 					type="password" id="confirmPassword" name="confirmPassword"
 					placeHolder="Re-Type Password" class="form-control" />
 			</div>
-			<div class="form-group">
-				<label for="size">Are you a city official or resident? </label> 
-				<select id="role" name="role" placeHolder="Select an option">
-					<option value="admin">City Official</option>
-					<option value="null">Resident</option>
-				</select>
-			</div>
 			<button type="submit" class="btn btn-default">Create User</button>
 		</div>
 		<div class="col-sm-4"></div>
