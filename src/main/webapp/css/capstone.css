@@ -1,9 +1,13 @@
 
 
 body{
-	background-color:white;
+	background-color:black;
 }
-
+.navbar{
+	background-color: #beff50;
+	color: #black;
+	border: white;
+}
 
 
 								<!--Pothole Info Window -->
@@ -19,6 +23,7 @@ body{
 }
 						
 								<!--Report a Pothole Form -->
+								<!--Depth Images-->
 #report-a-pothole-form {
 	width: 100%;
 }
@@ -46,7 +51,11 @@ body{
 	width: 160px;
 	height: auto;
 }
-
+							<!--End Depth Images -->
+#report-a-pothole-form {	/*It's possible we have to style this as a JSON object*/
+	background-color: black;
+	color: white;
+}
 
 							<!-- pop up window on report a pot hole -->
 
