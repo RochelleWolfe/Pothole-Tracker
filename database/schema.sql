@@ -57,5 +57,9 @@ INSERT into pothole (lat,       long, street_add, size, depth, severity, report_
 
 
 INSERT into app_user (user_name,      password,              role,   salt)
-        values       ('testadmin',  'PasswordPassword',     'admin', 'salt');   
+        values       ('testadmin',  'PasswordPassword',     'admin', 'salt');  
+        
+INSERT into app_user (user_name,      password,                 role,      salt)
+        values       ('testtest',  'PasswordPassword',          null,      'salt'); 
+         
 COMMIT;
