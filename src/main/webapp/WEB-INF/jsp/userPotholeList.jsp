@@ -54,6 +54,7 @@
 		<th>Date sent for repair</th>
 		<th>Repair in progress</th>
 		<th>Report viewed by the city</th>
+		<th>Pothole repaired?</th>
 
 	</tr>
 	
@@ -88,6 +89,9 @@
 			<label for="admin_aware"></label> 
 			<input type="checkbox" id="admin_aware" name="admin_aware" value="true">Yes
 			<input type="hidden" id="admin_aware" name="admin_aware" value="false">
+			<td>
+			<label for="delete"></label> 
+			<input type="checkbox" id="delete" name="delete">Remove
 			</td>
 			<td><input type="submit" value="Submit"/></td>
 		</tr>

@@ -162,10 +162,21 @@ public class AuthenticationController {
 		return "redirect:/{currentUser}/potholeList";
 	}
 	
-//	@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.POST)
-//	public String deletePotholes() {
-//		
-//	}
+	/*@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.POST)
+	public String deletePotholes(
+			@RequestParam String markerId,
+			HttpSession session) {
+		
+		User currentUser = (User)session.getAttribute("currentUser");
+		String user = currentUser.getUserName();
+
+		Pothole deletePothole = new Pothole();
+		deletePothole.setMarkerId(markerId);
+		deletePothole.setUser(user);
+		
+		potholeDAO.deletePothole(markerId);
+		return "redirect:/{currentUser}/potholeList";
+	} */
 	
 
 
