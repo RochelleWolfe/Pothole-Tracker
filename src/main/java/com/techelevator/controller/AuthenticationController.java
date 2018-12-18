@@ -139,17 +139,34 @@ public class AuthenticationController {
 		}
 	}
 	
-	@RequestMapping(path="/{currentUser}/adminPotholeList", method=RequestMethod.POST)
-	public String submitListOfPotholesAdmin(@PathVariable String currentUser, @RequestParam String role) {
-		User newUser = new User();
-		String admin = null;
-		if(newUser.getRole() == admin) {
-			return "adminPotholeList";
-		}else {
+	@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.POST)
+	public String submitListOfPotholesAdmin(@RequestParam boolean repairing,
+			@RequestParam boolean admin_aware,
+			@RequestParam String markerId,
+			HttpSession session) {
+		System.out.println(repairing);
+		System.out.println(admin_aware);
 		
-		return "redirect:/adminPotholeList";
-		}
+		User currentUser = (User)session.getAttribute("currentUser");
+		String user = currentUser.getUserName();
+
+		Pothole updatePothole = new Pothole();
+		updatePothole.setRepairing(repairing);
+		updatePothole.setAdmin_aware(admin_aware);
+		updatePothole.setMarkerId(markerId);
+		updatePothole.setUser(user);
+
+		potholeDAO.updatePotholeList(updatePothole);
+		
+
+		return "redirect:/{currentUser}/potholeList";
 	}
+	
+	@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.POST)
+	public String deletePotholes() {
+		
+	}
+	
 
 
 	@RequestMapping(path="/logout", method=RequestMethod.POST)

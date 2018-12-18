@@ -9,4 +9,6 @@ public interface PotholeDao {
 	public void save(Pothole pothole);
 	public void updateReportCount(Pothole pothole);
 	public Pothole getPotholeById(String markerId);
+	public void updatePotholeList(Pothole pothole);
+	public void deletePothole(String markerId);
 }
