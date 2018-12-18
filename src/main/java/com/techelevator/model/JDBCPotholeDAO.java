@@ -81,6 +81,17 @@ public class JDBCPotholeDAO implements PotholeDao {
 	
 	}
 	
+	public void updatePotholeList(Pothole pothole) {
+		String sqlUpdateReportCount = "UPDATE pothole" + 
+									" SET is_repairing  = " + pothole.isRepairing() + ","
+									+ " sent_for_repair = NOW(),"
+									+ " admin_aware = " + pothole.isAdmin_aware() 
+									+ " WHERE marker_id = " + pothole.getMarkerId() +" ;" ;
+		jdbcTemplate.update(sqlUpdateReportCount);
+				
+	
+	}
+	
 	public Pothole getPotholeById(String id) {
 		Pothole pothole = new Pothole();
 		String sqlFindPotById = "SELECT * FROM pothole WHERE marker_id = " + id;
@@ -92,8 +103,8 @@ public class JDBCPotholeDAO implements PotholeDao {
 					
 	}
 	
-	public void deletePothole(String id) {
-		String sqlDeletePothole = "Delete * FROM pothole WHERE marker_id = " + id;
+	public void deletePothole(String markerId) {
+		String sqlDeletePothole = "Delete * FROM pothole WHERE marker_id = " + markerId;
 		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlDeletePothole);
 	}
 	

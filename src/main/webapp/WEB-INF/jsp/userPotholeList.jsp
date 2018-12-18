@@ -39,7 +39,7 @@
 	</c:forEach>
 </table>
 
-<form:form action="admin" method="POST" modelAttribute="survey">
+
 
 <table class="userPotholeList">
 
@@ -52,9 +52,17 @@
 		<th>Priority</th>
 		<th>Currently repairing?</th>
 		<th>Date sent for repair</th>
+		<th>Repair in progress</th>
+		<th>Report viewed by the city</th>
 
 	</tr>
+	
 	<c:forEach var="pothole" items="${potholeList}">
+	<c:url var="formAction" value="/{currentUser}/potholeList" >
+	<c:param name="markerId" value="${pothole.markerId}" />
+	</c:url>
+		<form method="POST" action="${formAction}">
+<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
 		<tr>
 			<td>${pothole.streetAdd}</td>
 			<td><c:set var="size" value="${pothole.size}" /> <c:if
@@ -71,9 +79,22 @@
 			<td>${pothole.priority}</td>
 			<td>${pothole.repairing}</td>
 			<td>${pothole.dateSentRepair}</td>
+			<td>
+			<label for="repairing"></label> 
+			<input type="checkbox" id="repairing" name="repairing" value="true">Yes
+			<input type="hidden" id="repairing"name="repairing" value="false">
+			</td>
+			<td>
+			<label for="admin_aware"></label> 
+			<input type="checkbox" id="admin_aware" name="admin_aware" value="true">Yes
+			<input type="hidden" id="admin_aware" name="admin_aware" value="false">
+			</td>
+			<td><input type="submit" value="Submit"/></td>
 		</tr>
+		</form>
 	</c:forEach>
+	
 </table>
-</form:form>
+
 
 <c:import url="/WEB-INF/jsp/footer.jsp" />
