@@ -46,7 +46,7 @@ CREATE TABLE user_potholes(
 INSERT into pothole (lat,       long,  street_add, size, depth, severity, report_date, report_count, priority) 
         values      (41.4156, -81.9235, 28206,     12,      6,    1 ,      '2018-11-02',  1,            1  );
 INSERT into pothole (lat,       long,  street_add, size, depth, severity, report_date,  report_count, priority)
-        values      (41.3750, -81.9085, , 44555,    24,      1,    2,      '2018-11-02',   2,              1);
+        values      (41.3750, -81.9085,  44555,    24,      1,    2,      '2018-11-02',   2,              1);
 INSERT into pothole (lat,       long, street_add, size, depth, severity, report_date,  report_count, priority)
         values      (41.502675, -81.639509,  4567, 40,       24,  3,       '2018-11-02',  1,              1);
 INSERT into pothole (lat,       long,  street_add, size, depth, severity, report_date,  report_count, priority) 

@@ -39,7 +39,7 @@
 	</c:forEach>
 </table>
 
-<form:form action="survey" method="POST" modelAttribute="survey">
+<form:form action="admin" method="POST" modelAttribute="survey">
 
 <table class="userPotholeList">
 
