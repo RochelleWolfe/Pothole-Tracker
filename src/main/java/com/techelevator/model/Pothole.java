@@ -13,7 +13,8 @@ public class Pothole {
 	private int			depth;
 	private Date		reportDate;
 	private int			reportingCount;
-	private int			priority; 
+	private int			priority;
+	private String		user;
 	
 	private int			severity= 0;
 	private boolean		isRepairing;
@@ -125,6 +126,12 @@ public class Pothole {
 			severity = 3;
 		}
 		
+	}
+	public String getUser() {
+		return user;
+	}
+	public void setUser(String user) {
+		this.user = user;
 	}
 	
 }

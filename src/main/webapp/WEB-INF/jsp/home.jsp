@@ -31,28 +31,32 @@
 			// creates google.maps object LatLng that holds latitude and longitude values for a marker
 			var position = new google.maps.LatLng(pothole.lat, pothole.lng);
 			
+			
+			// changes the stlying based on severity
+			let severityStringAddress = "";
+			switch(pothole.severity) {
+			  case 1:
+			    severityStringAddress = 'info-window-address-severity-one';
+			    break;
+			  case 2:
+				  severityStringAddress = 'info-window-address-severity-two';
+			    break;
+			  case 3:
+				  severityStringAddress = 'info-window-address-severity-three';
+				break;
+			}
+			
+			
 			// defines infowindow for use during doubleclick event
-			var contentString =     "<div id='info-window-content'><h2 id='pothole-severity' class='severity'>" + pothole.severity + "</h2> <h3 id='pothole-address'>" + pothole.streetAdd + "</h3><h4 id='pothole-report-date'>This pothole was reported on " + pothole.reportDate + "</h4><h4 id='pothole-status'>The city is working on this pothole " + pothole.repairing + "</h4><span id='pothole-submissions'> This pothole has been reported " + pothole.reportingCount + " times</span></div>";
+			var contentString =     "<div id='info-window-content'></h2> <h3 id='pothole-address' class='" + severityStringAddress + "'>" + pothole.streetAdd + "</h3><h4 id='pothole-report-date'>This pothole was reported on " + pothole.reportDate + "</h4><h4 id='pothole-status'>The city is working on this pothole " + pothole.repairing + "</h4><span id='pothole-submissions'> This pothole has been reported " + pothole.reportingCount + " times</span></div>";
 			
 			var infoWindow = new google.maps.InfoWindow({
 				content: contentString
+			
 			});
-			infoWindow.open();
-			// changes the stlying based on severity
-			let window = document.getElementById('info-window-content');
-	//		switch(pothole.severity) {
-	//		  case 1:
-	//		    window.classList.add('info-window-severity-one')
-	//		    break;
-	//		  case 2:
-	//			  window.classList.add('info-window-severity-two')
-	//		    break;
-	//		  case 3:
-	//			  window.classList.add('info-window-severity-three')
-	//			break;
-	//		}
 			
-			
+			console.log(infoWindow.getContent());
+	
 			// adds marker to map
 			var marker = new google.maps.Marker({
 				position: position,

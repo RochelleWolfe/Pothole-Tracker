@@ -102,18 +102,20 @@ public class AuthenticationController {
 	@RequestMapping(path="/{currentUser}/reportPothole", method=RequestMethod.POST)
 	public String submitPotholeReport(@RequestParam String lat, 
 										@RequestParam String lng, 
-										@RequestParam String img, 
 										@RequestParam String streetAdd, 
 										@RequestParam int size,
 										@RequestParam int depth,
 																HttpSession session ) {
+		User currentUser = (User)session.getAttribute("currentUser");
+		String user = currentUser.getUserName();
+		
 		Pothole newHole = new Pothole();
 		newHole.setLat(lat);
 		newHole.setLng(lng);
-		newHole.setImg(img);
 		newHole.setStreetAdd(streetAdd);
 		newHole.setSize(size);
 		newHole.setDepth(depth);
+		newHole.setUser(user);
 		//newHole.setReportDate(java.time.LocalDate.now());
 		potholeDAO.save(newHole); 
 		

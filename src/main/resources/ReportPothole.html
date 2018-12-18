@@ -7,9 +7,9 @@
       <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
       
       <div class="form-group">
-        <input type="text" id="lat" name="lat" placeHolder="lat"class="form-control" /></div>
+        <input type="hidden" id="lat" name="lat" placeHolder="lat"class="form-control" /></div>
       <div class="form-group">
-        <input type="text" id="lng" name="lng" placeHolder="lng" class="form-control" /></div>
+        <input type="hidden" id="lng" name="lng" placeHolder="lng" class="form-control" /></div>
       
       <div class="form-group">
         <h4 id="form-address-user-input"> </h4>
@@ -22,32 +22,34 @@
           <option value="24">Medium: 12-24in</option>
           <option value="40">Larger than 24in</option></select></div>
       
-      <div class="form-group">
-        <input type="radio" name="depth" value="2">
+      <div class="form-group" id="depth-radios"><label for="depth-radios"> Select the Depth of the Pothole</label>
+        <br>
+        <input type="radio" name="depth" value="2" id="very-shallow">
+        <label for="very-shallow"> Less than 3 inches deep</label>
         <c:url var="verySmallURL" value="/img/golfball.png" />
         <img class="depth-img" id="very-Small-Depth" src="${verySmallURL}" alt="very shallow depth, 2 inches" /> 
         <br> 
-        <input type="radio" name="depth" value="5">
+        <input type="radio" name="depth" value="5" id="shallow">
+        <label for="shallow"> 3-10 inches deep</label>
         <c:url var="smallURL" value="/img/Baseball.png" />
         <img class="depth-img" id="Small-Depth" src="${smallURL}" alt="shallow depth, 5 inches" /> 
         <br> 
-        <input type="radio" name="depth" value="12">
+        <input type="radio" name="depth" value="12" id="medium-deep">
+        <label for="medium-deep"> 10-18 inches deep</label>
         <c:url var="mediumURL" value="/img/basketball.png" />
         <img class="depth-img" id="Medium-Depth" src="${mediumURL}" alt="sizeable depth, 12 inches" /> 
         <br> 
-        <input type="radio" name="depth" value="24">
+        <input type="radio" name="depth" value="24" id="very-deep">
+        <label for="very-deep"> More than 18 inches deep</label>
         <c:url var="largeURL" value="/img/beachball.png" />
         <img class="depth-img" id="Large-Depth" src="${largeURL}" alt="very deep, 24 inches" /> 
         <br>
       </div>
       <div>
-        <label for="file">Upload an image of the pothole </label> 
-        <input type="file" id="img" name="img" size="50" /> 
-        <br />
-      </div>
+         <br >
       <button type="submit" class="btn btn-default" value="submit">Submit</button></form>
     
   </div>
   <div class="col-sm-4"></div>
   
-</div> 
+</div>  
