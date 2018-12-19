@@ -62,8 +62,9 @@
 	<c:url var="formAction" value="/{currentUser}/potholeList" >
 	<c:param name="markerId" value="${pothole.markerId}" />
 	</c:url>
-		<form method="POST" action="${formAction}">
-<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+		<form id="updatePothole" method="POST" action="${formAction}"> <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/></form>
+		<form id="deletePothole" method="DELETE" action="${formAction}"> <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/></form>
+		
 		<tr>
 			<td>${pothole.streetAdd}</td>
 			<td><c:set var="size" value="${pothole.size}" /> <c:if
@@ -82,20 +83,20 @@
 			<td>${pothole.dateSentRepair}</td>
 			<td>
 			<label for="repairing"></label> 
-			<input type="checkbox" id="repairing" name="repairing" value="true">Yes
-			<input type="hidden" id="repairing"name="repairing" value="false">
+			<input type="checkbox" id="repairing" name="repairing" value="true" form="updatePothole">Yes
+			<input type="hidden" id="repairing"name="repairing" value="false" form="updatePothole">
 			</td>
 			<td>
 			<label for="admin_aware"></label> 
-			<input type="checkbox" id="admin_aware" name="admin_aware" value="true">Yes
-			<input type="hidden" id="admin_aware" name="admin_aware" value="false">
-			<td>
-			<label for="delete"></label> 
-			<input type="checkbox" id="delete" name="delete">Remove
+			<input type="checkbox" id="admin_aware" name="admin_aware" value="true" form="updatePothole">Yes
+			<input type="hidden" id="admin_aware" name="admin_aware" value="false" form="updatePothole">
 			</td>
-			<td><input type="submit" value="Submit"/></td>
+			<td>
+        	<input type="checkbox" name="delete" value="Delete" form="deletePothole"> Remove
+			</td>
+			<td><input type="submit" value="Submit" form="updatePothole"/></td>
 		</tr>
-		</form>
+
 	</c:forEach>
 	
 </table>
