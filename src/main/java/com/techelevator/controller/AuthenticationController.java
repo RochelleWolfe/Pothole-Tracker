@@ -2,8 +2,6 @@ package com.techelevator.controller;
 
 
 
-import java.io.File;
-import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -128,6 +126,9 @@ public class AuthenticationController {
 		User newUser = (User)session.getAttribute("currentUser");
 		String user = newUser.getUserName();
 		
+		List<Pothole> potholeList = potholeDAO.getAllPotholes();
+		session.setAttribute("potholeList", potholeList);
+		
 		if(userDAO.isAdmin(user)) {
 			return "adminPotholeList";
 		} 
@@ -136,18 +137,20 @@ public class AuthenticationController {
 	
 	
 	@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.POST)
-	public String submitListOfPotholesAdmin(@RequestParam boolean repairing,
+	public String submitListOfPotholesAdmin(@RequestParam("repairing") List<Boolean> repairing,
 			@RequestParam boolean admin_aware,
 			@RequestParam String markerId,
 			HttpSession session) {
+//		System.out.println(repairing);
+//		System.out.println(admin_aware);
+		
 		System.out.println(repairing);
-		System.out.println(admin_aware);
 		
 		User currentUser = (User)session.getAttribute("currentUser");
 		String user = currentUser.getUserName();
 
 		Pothole updatePothole = new Pothole();
-		updatePothole.setRepairing(repairing);
+		//updatePothole.setRepairing(repairing);
 		updatePothole.setAdmin_aware(admin_aware);
 		updatePothole.setMarkerId(markerId);
 		updatePothole.setUser(user);
@@ -166,10 +169,6 @@ public class AuthenticationController {
 		
 		User currentUser = (User)session.getAttribute("currentUser");
 		String user = currentUser.getUserName();
-
-		Pothole deletePothole = new Pothole();
-		deletePothole.setMarkerId(markerId);
-		deletePothole.setUser(user);
 		
 		potholeDAO.deletePothole(markerId);
 		return "redirect:/{currentUser}/potholeList";

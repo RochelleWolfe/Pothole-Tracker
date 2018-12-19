@@ -28,8 +28,9 @@
 	<c:url var="formDelete" value="/{currentUser}/potholeDelete" >
 	<c:param name="markerId" value="${pothole.markerId}" />
 	</c:url>
-		<form id="updatePothole" method="POST" action="${formAction}"> <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/></form>
 		<form id="deletePothole" method="POST" action="${formDelete}"> <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/></form>
+	
+		<form id="updatePothole" method="POST" action="${formAction}"> <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/></form>
 		
 		<tr>
 			<td>${pothole.streetAdd}</td>
@@ -50,15 +51,17 @@
 			<td>
 			<label for="repairing"></label> 
 			<input type="checkbox" id="repairing" name="repairing" value="true" form="updatePothole">Yes
-			<input type="hidden" id="repairing"name="repairing" value="false" form="updatePothole">
+			<input type="hidden" id="repairingHidden"name="repairing" value="false" form="updatePothole">
 			</td>
 			<td>
 			<label for="admin_aware"></label> 
 			<input type="checkbox" id="admin_aware" name="admin_aware" value="true" form="updatePothole">Yes
-			<input type="hidden" id="admin_aware" name="admin_aware" value="false" form="updatePothole">
+			<input type="hidden" id="admin_awareHidden" name="admin_aware" value="false" form="updatePothole"> 
 			</td>
 			<td>
+			
         	<input type="submit" name="Remove" value="Delete" form="deletePothole"> 
+        	
 			</td>
 			<td><input type="submit" value="Submit" form="updatePothole"/></td>
 		</tr>
@@ -66,6 +69,35 @@
 	</c:forEach>
 	
 </table>
+
+<script>
+document.addEventListener("DOMContentLoaded", function(event) {
+    
+
+
+let repairing = document.getElementById("repairing");
+let adminAware = document.getElementById("admin_aware");
+
+	repairing.addEventListener('change', function (event) {
+	    if (reparing.checked) {
+	    	document.getElementById('repairingHidden').value = true;
+	    } else {
+	    	document.getElementById('repairingHidden').value = false;
+	    }
+	});
+
+    
+	adminAware.addEventListener('change', function (event) {
+	    if (adminAware.checked) {
+	    	document.getElementById('admin_awareHidden').value = true;
+	    } else {
+	    	document.getElementById('admin_awareHidden').value = false;
+	    }			
+	});
+
+});
+
+</script>
 
 
 <c:import url="/WEB-INF/jsp/footer.jsp" />

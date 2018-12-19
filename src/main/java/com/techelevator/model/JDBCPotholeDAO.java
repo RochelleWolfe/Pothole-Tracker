@@ -1,6 +1,5 @@
 package com.techelevator.model;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -104,7 +103,7 @@ public class JDBCPotholeDAO implements PotholeDao {
 	}
 	
 	public void deletePothole(String markerId) {
-		String sqlDeletePothole = "Delete * FROM pothole WHERE marker_id = " + markerId;
+		String sqlDeletePothole = "Delete FROM pothole WHERE marker_id = " + markerId;
 		 jdbcTemplate.update(sqlDeletePothole);
 	}
 	
