@@ -26,7 +26,7 @@
   			{elementType: "labels.icon", "stylers": [{"visibility": "off"
 		      }]}, 
 		   	  {
-		    elementType: "labels.text.fill","stylers": [{"color": "#616161"
+		    elementType: "labels.text.fill","stylers": [{"color": "#5ab6ae" //#616161 previously grey, now teal as customer requested
 		      }]}, 
 		   	  {
 		    elementType: "labels.text.stroke","stylers": [{"color": "#f5f5f5"
@@ -80,12 +80,12 @@
 		    "stylers": [{ "visibility": "off"}
 		    ]},
 		  {
-		    "featureType": "road","elementType": "labels.icon",
-		    "stylers": [{ "visibility": "off"
+		    featureType: "road","elementType": "labels.icon",
+		    "stylers": [{ "color": "#5ab6ae"					//turned visibility on and text blue
 		      }]},
 		  {
 		    "featureType": "road.arterial", "elementType": "labels.text.fill",
-		    "stylers": [{"color": "#757575"
+		    "stylers": [{"color": "#5ab6ae"						//turned visibility on and text blue
 		      }]},
 		  {
 		    "featureType": "road.highway","elementType": "geometry",
