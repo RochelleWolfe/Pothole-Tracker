@@ -41,6 +41,7 @@ public class UserController {
 		}
 		
 		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getRole());
+		//This is where the alert success to happen
 		return "redirect:/login";
 	}
 	

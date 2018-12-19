@@ -2,7 +2,7 @@
 
 <c:import url="/WEB-INF/jsp/header.jsp" />
 
-<script type="text/javascript">
+<script type="text/javascript"> //To stop program from exploding when trying to insert an existing username, use try-catch on the SQL statement, not here
 	$(document)
 			.ready(
 					function() {

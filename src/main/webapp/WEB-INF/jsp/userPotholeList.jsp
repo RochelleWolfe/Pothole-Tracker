@@ -12,10 +12,10 @@
 		<th>Size</th>
 		<th>Severity</th>
 		<th>Date Reported</th>
-		<th>How many times reported</th>
-		<th>Priority</th>
+		<th># Times Reported</th>
+														
 		<th>Currently repairing?</th>
-		<th>Date sent for repair</th>
+		<th>Date Sent For Repair</th>
 
 	</tr>
 	<c:forEach var="pothole" items="${potholeList}">
@@ -32,7 +32,7 @@
 			<td>${pothole.severity}</td>
 			<td>${pothole.reportDate}</td>
 			<td>${pothole.reportingCount}</td>
-			<td>${pothole.priority}</td>
+															
 			<td>${pothole.repairing}</td>
 			<td>${pothole.dateSentRepair}</td>
 		</tr>

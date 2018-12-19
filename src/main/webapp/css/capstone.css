@@ -9,8 +9,12 @@ body{
 	border: white;
 }
 
-
-								
+table {
+	background-color: #e6e6e6;
+}
+.row {
+	background-color: #e6e6e6;
+}								
 
 .info-window-address-severity-one {
 	border-bottom: 5px solid green;
@@ -183,6 +187,10 @@ body{
 .userPotHoleList, tr:nth-child(even){
   background-color: #96a3a5;
   color: #fff;
+}
+
+.userPotHoleList, tr:nth-child(even), button{
+	color: black
 }
 
 
