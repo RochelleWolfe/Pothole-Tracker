@@ -10,6 +10,6 @@ public interface UserDAO {
 
 	public Object getUserByUserName(String userName);
 	
-	public boolean isAdmin();
+	public boolean isAdmin(String user);
 
 }

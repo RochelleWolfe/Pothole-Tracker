@@ -105,7 +105,7 @@ public class JDBCPotholeDAO implements PotholeDao {
 	
 	public void deletePothole(String markerId) {
 		String sqlDeletePothole = "Delete * FROM pothole WHERE marker_id = " + markerId;
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sqlDeletePothole);
+		 jdbcTemplate.update(sqlDeletePothole);
 	}
 	
 	

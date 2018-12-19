@@ -15,10 +15,22 @@
 		<th>Priority</th>
 		<th>Currently repairing?</th>
 		<th>Date sent for repair</th>
-		<th> admin </th>
+		<th>Repair in progress</th>
+		<th>Report viewed by the city</th>
+		<th>Pothole repaired?</th>
 
 	</tr>
+	
 	<c:forEach var="pothole" items="${potholeList}">
+	<c:url var="formAction" value="/{currentUser}/potholeList" >
+	<c:param name="markerId" value="${pothole.markerId}" />
+	</c:url>
+	<c:url var="formDelete" value="/{currentUser}/potholeDelete" >
+	<c:param name="markerId" value="${pothole.markerId}" />
+	</c:url>
+		<form id="updatePothole" method="POST" action="${formAction}"> <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/></form>
+		<form id="deletePothole" method="POST" action="${formDelete}"> <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/></form>
+		
 		<tr>
 			<td>${pothole.streetAdd}</td>
 			<td><c:set var="size" value="${pothole.size}" /> <c:if
@@ -35,8 +47,25 @@
 			<td>${pothole.priority}</td>
 			<td>${pothole.repairing}</td>
 			<td>${pothole.dateSentRepair}</td>
+			<td>
+			<label for="repairing"></label> 
+			<input type="checkbox" id="repairing" name="repairing" value="true" form="updatePothole">Yes
+			<input type="hidden" id="repairing"name="repairing" value="false" form="updatePothole">
+			</td>
+			<td>
+			<label for="admin_aware"></label> 
+			<input type="checkbox" id="admin_aware" name="admin_aware" value="true" form="updatePothole">Yes
+			<input type="hidden" id="admin_aware" name="admin_aware" value="false" form="updatePothole">
+			</td>
+			<td>
+        	<input type="submit" name="Remove" value="Delete" form="deletePothole"> 
+			</td>
+			<td><input type="submit" value="Submit" form="updatePothole"/></td>
 		</tr>
+
 	</c:forEach>
+	
 </table>
+
 
 <c:import url="/WEB-INF/jsp/footer.jsp" />

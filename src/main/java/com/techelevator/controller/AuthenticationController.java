@@ -126,13 +126,11 @@ public class AuthenticationController {
 	public String displayListOfPotholes(@PathVariable String currentUser, 
 			HttpSession session) {
 		User newUser = (User)session.getAttribute("currentUser");
-
-		if(userDAO.isAdmin()) {
+		String user = newUser.getUserName();
+		
+		if(userDAO.isAdmin(user)) {
 			return "adminPotholeList";
 		} 
-		if(!userDAO.isAdmin()) {
-			return "userPotholeList";
-		}
 		return "userPotholeList";
 	}
 	
@@ -160,7 +158,7 @@ public class AuthenticationController {
 		return "redirect:/{currentUser}/potholeList";
 	}
 	
-	@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.DELETE)
+	@RequestMapping(path="/{currentUser}/potholeDelete", method=RequestMethod.POST)
 	public String deletePotholes(
 			@RequestParam String markerId,
 			HttpSession session) {

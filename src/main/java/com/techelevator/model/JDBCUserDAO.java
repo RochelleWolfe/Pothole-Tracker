@@ -1,5 +1,8 @@
 package com.techelevator.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.sql.DataSource;
 
 import org.bouncycastle.util.encoders.Base64;
@@ -68,19 +71,21 @@ public class JDBCUserDAO implements UserDAO {
 		return thisUser;
 	}
 
-	//@SuppressWarnings("unlikely-arg-type")
+	// @SuppressWarnings("unlikely-arg-type")
 	@Override
-	public boolean isAdmin() {
-		String sqlSearchForRole = "SELECT role " + "FROM app_user " + "WHERE role is NOT NULL ";
+	public boolean isAdmin(String userName) {
+		String sqlSearchForRole = "SELECT * " + "FROM app_user " + "WHERE role is NOT NULL ";
 
 		SqlRowSet user = jdbcTemplate.queryForRowSet(sqlSearchForRole);
-		User userRole = new User();
-		userRole.setRole(sqlSearchForRole);
-		if (userRole.equals(userRole)) {
-			return true;
-		} else {
-			return false;
+		List<String> users = new ArrayList<>();
+		while (user.next()) {
+			users.add(user.getString("user_name"));
 		}
+		for (String name : users) {
+			if (name.equals(userName)) {
+				return true;
+			}
+		}
+		return false;
 	}
-
 }
