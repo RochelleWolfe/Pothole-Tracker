@@ -53,18 +53,21 @@
 			<input type="checkbox" id="repairing" name="repairing" value="true" form="updatePothole">Yes
 			<input type="hidden" id="repairingHidden"name="repairing" value="false" form="updatePothole">
 			</td>
+			
 			<td>
 			<label for="admin_aware"></label> 
 			<input type="checkbox" id="admin_aware" name="admin_aware" value="true" form="updatePothole">Yes
 			<input type="hidden" id="admin_awareHidden" name="admin_aware" value="false" form="updatePothole"> 
 			</td>
+			
+			<td><input type="submit" value="Submit" form="updatePothole"/></td>
+		
 			<td>
 			
         	<input type="submit" name="Remove" value="Delete" form="deletePothole"> 
         	
 			</td>
-			<td><input type="submit" value="Submit" form="updatePothole"/></td>
-		</tr>
+			</tr>
 
 	</c:forEach>
 	

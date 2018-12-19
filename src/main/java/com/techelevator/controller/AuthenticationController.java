@@ -145,6 +145,7 @@ public class AuthenticationController {
 //		System.out.println(admin_aware);
 		
 		System.out.println(repairing);
+		System.out.println(markerId);
 		
 		User currentUser = (User)session.getAttribute("currentUser");
 		String user = currentUser.getUserName();
