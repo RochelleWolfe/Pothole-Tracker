@@ -123,17 +123,17 @@ public class AuthenticationController {
 	}
 	
 	@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.GET)
-	public String displayListOfPotholes(@PathVariable String currentUser,
+	public String displayListOfPotholes(@PathVariable String currentUser, 
 			HttpSession session) {
 		User newUser = (User)session.getAttribute("currentUser");
-		
-		String admin = null;
-		if(newUser.getRole() == admin) {
+
+		if(userDAO.isAdmin()) {
+			return "adminPotholeList";
+		} 
+		if(!userDAO.isAdmin()) {
 			return "userPotholeList";
-		}else {
-		
-		return "adminPotholeList";
 		}
+		return "userPotholeList";
 	}
 	
 	
