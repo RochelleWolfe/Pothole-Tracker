@@ -11,4 +11,5 @@ public interface PotholeDao {
 	public Pothole getPotholeById(String markerId);
 	public void updatePotholeList(Pothole pothole);
 	public void deletePothole(String markerId);
+	public void updatePotholeListFalse(Pothole pothole);
 }
