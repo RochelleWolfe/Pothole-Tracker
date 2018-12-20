@@ -24,9 +24,7 @@ public class UserController {
 	public UserController(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
-	
-//	@RequestMapping(path="/", method=RequestMethod.GET)
-//	public String displayHome(HttpSession session) {
+
 
 	@RequestMapping(path="/users/new", method=RequestMethod.GET)
 	public String displayNewUserForm(ModelMap modelHolder) {
@@ -45,8 +43,8 @@ public class UserController {
 		}
 		
 		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getRole());
-		//This is where the alert success to happen
-		//session.add
+		String regSuccessStr = "Thank You for Registering. Please Login";
+		session.setAttribute("regSuccess", regSuccessStr); //Setting the message that will only display on the Login page if the user was redirected from Registration
 		return "redirect:/login";
 	}
 	

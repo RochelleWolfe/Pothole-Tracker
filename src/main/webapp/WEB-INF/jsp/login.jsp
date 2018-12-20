@@ -26,7 +26,10 @@
 	});
 </script>
 
+
+
 <div class="row">
+<!--  <h2 id="regSuccess">${regSuccess}</h2> 		session object is not resetting and this displays all the time-->
 	<div class="col-sm-4"></div>
 	<div class="col-sm-4">
 		<c:url var="formAction" value="/login" />

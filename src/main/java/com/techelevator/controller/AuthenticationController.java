@@ -67,6 +67,7 @@ public class AuthenticationController {
 						@RequestParam String password, 
 						@RequestParam(required=false) String destination,
 						HttpSession session) { 
+		session.setAttribute("regSuccess", "");
 		if(userDAO.searchForUsernameAndPassword(userName, password)) {
 			session.setAttribute("currentUser", userDAO.getUserByUserName(userName));
 			

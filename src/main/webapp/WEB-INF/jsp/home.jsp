@@ -155,7 +155,7 @@
 			
 			
 			// defines infowindow for use during doubleclick event
-			var contentString =     "<div id='info-window-content'></h2> <h3 id='pothole-address' class='" + severityStringAddress + "'>" + pothole.streetAdd + "</h3><h4 id='pothole-report-date'>This pothole was reported on " + pothole.reportDate + "</h4><h4 id='pothole-status'>The city is working on this pothole " + pothole.repairing + "</h4><span id='pothole-submissions'> This pothole has been reported " + pothole.reportingCount + " times</span></div>";
+			var contentString =     "<div id='info-window-content'></h2> <h3 id='pothole-address' class='" + severityStringAddress + "'>" + pothole.streetAdd + "</h3><h4 id='pothole-report-date'>This pothole was reported on " + pothole.reportDate + "</h4><h4 id='pothole-status'>Is this pothole being repaired? " + pothole.repairing + "</h4><span id='pothole-submissions'> This pothole has been reported " + pothole.reportingCount + " times</span></div>";
 			
 			var infoWindow = new google.maps.InfoWindow({
 				content: contentString

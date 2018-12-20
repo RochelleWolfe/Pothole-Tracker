@@ -12,10 +12,9 @@
 		<th>Severity</th>
 		<th>Date Reported</th>
 		<th>How many times reported</th>
-		<th>Priority</th>
 		<th>Currently repairing?</th>
 		<th>Date sent for repair</th>
-		<th>Repair in progress</th>
+		<th>Submit for Repair</th>
 		<th>Report viewed by the city</th>
 		<th>Delete</th>
 		<th></th>
@@ -46,7 +45,6 @@
 			<td>${pothole.severity}</td>
 			<td>${pothole.reportDate}</td>
 			<td>${pothole.reportingCount}</td>
-			<td>${pothole.priority}</td>
 			<td><c:set var="repairing" value="${pothole.repairing}" /> <c:if
 					test="${repairing == false}">
 					<c:out value="No" />

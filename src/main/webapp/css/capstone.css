@@ -16,6 +16,11 @@ table {
 	background-color: #e6e6e6;
 }								
 
+#regSuccess {
+	color: #30bcb0;
+	text-align: center;
+}
+
 .info-window-address-severity-one {
 	border-bottom: 5px solid green;
 }
