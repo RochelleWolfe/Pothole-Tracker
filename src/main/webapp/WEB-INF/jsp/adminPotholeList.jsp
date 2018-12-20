@@ -5,8 +5,7 @@
 <c:url var="potholeListUser" value="/{currentUser}/adminPotholeList" />
 
 <table class="userPotholeList">
-
-	<tr>
+ 	<tr>
 		<th>ID</th>
 		<th>Location</th>
 		<th>Size</th>
@@ -18,29 +17,22 @@
 		<th>Date sent for repair</th>
 		<th>Repair in progress</th>
 		<th>Report viewed by the city</th>
+		<th>Delete</th>
+		<th></th>
+		
 
 	</tr>
+
 	
-	
-	
-		</form>
-		
-	<c:forEach var="pothole" items="${potholeList}">
+ 	<c:forEach var="pothole" items="${potholeList}">
 	<c:url var="formAction" value="/{currentUser}/potholeList" >
 	<c:param name="markerId" value="${pothole.markerId}" />
 	</c:url>
-	<c:url var="formDelete" value="/{currentUser}/potholeDelete" >
-	<c:param name="markerId" value="${pothole.markerId}" />
-	</c:url>
-		
-			<form id="deletePothole" method="POST" action="${formDelete}"> <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/></form>
-			<form id="updatePothole" method="POST" action="${formAction}"> <input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
-		
-		<tr>
-			<td>
+		<form method="POST" action="${formAction}"><input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}"/>
+ 		<tr>
+ 			<td>
 			${pothole.markerId}
 			<label for="id"></label> 
-			<input type="checkbox" id="id" name="id" value="${pothole.markerId}" form="deletePothole">
 			</td>
 			<td>${pothole.streetAdd}</td>
 			<td><c:set var="size" value="${pothole.size}" /> <c:if
@@ -57,33 +49,33 @@
 			<td>${pothole.priority}</td>
 			<td>${pothole.repairing}</td>
 			<td>${pothole.dateSentRepair}</td>
-			
-			
 			<td>
 			<label for="repairing"></label> 
-			<input type="checkbox" id="repairing" name="repairing" value="${pothole.markerId}" form="updatePothole">Yes
-			<input type="hidden" id="repairingHidden"name="repairing" value="false" form="updatePothole">
+			<input type="checkbox" id="repairing" name="repairing" value="true">Yes
+			<input type="hidden" id="repairing"name="repairing" value="false">
 			</td>
-			
 			<td>
 			<label for="admin_aware"></label> 
-			<input type="checkbox" id="admin_aware" name="admin_aware" value="${pothole.markerId}" form="updatePothole">Yes
-			<input type="hidden" id="admin_awareHidden" name="admin_aware" value="false" form="updatePothole"> 
+			<input type="checkbox" id="admin_aware" name="admin_aware" value="true">Yes
+			<input type="hidden" id="admin_aware" name="admin_aware" value="false">
 			</td>
+			<td>
+			<label for="delete"></label> 
+			<input type="checkbox" id="delete" name="delete" value="true">Yes
+			<input type="hidden" id="delete" name="delete" value="false">
+			</td>
+			<td><input type="submit" value="Submit"/></td>
 			
-			</form>
-
-			</tr>
-
-	</c:forEach>
-
-</table>
-	<input type="submit" value="Submit" form="updatePothole"/>
-	<input type="submit" name="Remove" value="Delete" form="deletePothole"> 
-
-<script>
-document.getElementById()
-
-</script>
-
+ 		</tr>
+		</form>
+ 	</c:forEach>
+ </table>
+ 
+ <script>
+ 
+ let delete = document.getElementById('delete');
+ 
+ delete.addEventListener('click')
+ 
+ </script>
 <c:import url="/WEB-INF/jsp/footer.jsp" />
