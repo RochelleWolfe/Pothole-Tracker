@@ -41,6 +41,13 @@
 					});
 </script>
 
+ 
+
+<h2 id="Success">Once you have created your account, 
+you will be redirected <br> and prompted to log in  </h2>
+
+<br> 
+
 <c:url var="formAction" value="/users" />
 <form method="POST" action="${formAction}">
 	<input type="hidden" name="CSRF_TOKEN" value="${CSRF_TOKEN}" />
