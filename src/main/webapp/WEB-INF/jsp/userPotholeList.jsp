@@ -13,7 +13,7 @@
 		<th>Severity</th>
 		<th>Date Reported</th>
 		<th># Times Reported</th>
-														
+		<th>Has the city seen the request?</th>												
 		<th>Currently repairing?</th>
 		<th>Date Sent For Repair</th>
 
@@ -32,8 +32,20 @@
 			<td>${pothole.severity}</td>
 			<td>${pothole.reportDate}</td>
 			<td>${pothole.reportingCount}</td>
-															
-			<td>${pothole.repairing}</td>
+			<td><c:set var="viewed" value="${pothole.admin_aware}" /> <c:if
+					test="${viewed == false}">
+					<c:out value="No" />
+				</c:if> <c:if test="${viewed == true}">
+					<c:out value="Yes" />
+				</c:if> 
+				</td>											
+			<td><c:set var="repairing" value="${pothole.repairing}" /> <c:if
+					test="${repairing == false}">
+					<c:out value="No" />
+				</c:if> <c:if test="${repairing == true}">
+					<c:out value="Yes" />
+				</c:if> 
+				</td>
 			<td>${pothole.dateSentRepair}</td>
 		</tr>
 	</c:forEach>

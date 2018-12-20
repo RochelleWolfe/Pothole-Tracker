@@ -47,7 +47,13 @@
 			<td>${pothole.reportDate}</td>
 			<td>${pothole.reportingCount}</td>
 			<td>${pothole.priority}</td>
-			<td>${pothole.repairing}</td>
+			<td><c:set var="repairing" value="${pothole.repairing}" /> <c:if
+					test="${repairing == false}">
+					<c:out value="No" />
+				</c:if> <c:if test="${repairing == true}">
+					<c:out value="Yes" />
+				</c:if> 
+				</td>
 			<td>${pothole.dateSentRepair}</td>
 			<td>
 			<label for="repairing"></label> 
