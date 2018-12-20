@@ -181,7 +181,8 @@ table {
 .userPotholeList, td, th {
 	text-align: center;
 	table-layout: fixed ;
-	width: 100% ;
+    width: 114%;
+    margin: 0 -7%;
 }
 
 .userPotHoleList, tr:nth-child(even){
@@ -195,7 +196,7 @@ table {
 
 
 .userPotholeList, td, tr {
-  padding: 15px;
+  padding: 0em;
   border: 1px solid black;
 }
 
