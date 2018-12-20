@@ -1,5 +1,6 @@
 package com.techelevator.controller;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,9 @@ public class UserController {
 	public UserController(UserDAO userDAO) {
 		this.userDAO = userDAO;
 	}
+	
+//	@RequestMapping(path="/", method=RequestMethod.GET)
+//	public String displayHome(HttpSession session) {
 
 	@RequestMapping(path="/users/new", method=RequestMethod.GET)
 	public String displayNewUserForm(ModelMap modelHolder) {
@@ -33,7 +37,7 @@ public class UserController {
 	}
 	
 	@RequestMapping(path="/users", method=RequestMethod.POST)
-	public String createUser(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes flash) {
+	public String createUser(@Valid @ModelAttribute User user, BindingResult result, RedirectAttributes flash, HttpSession session) {
 		if(result.hasErrors()) {
 			flash.addFlashAttribute("user", user);
 			flash.addFlashAttribute(BindingResult.MODEL_KEY_PREFIX + "user", result);
@@ -42,6 +46,7 @@ public class UserController {
 		
 		userDAO.saveUser(user.getUserName(), user.getPassword(), user.getRole());
 		//This is where the alert success to happen
+		session.add
 		return "redirect:/login";
 	}
 	
