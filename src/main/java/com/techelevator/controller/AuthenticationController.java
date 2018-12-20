@@ -143,7 +143,7 @@ public class AuthenticationController {
 			@RequestParam String markerId,
 			@RequestParam boolean delete,
 			HttpSession session) {
-		
+		System.out.println(repairing);
 		User currentUser = (User)session.getAttribute("currentUser");
 		String user = currentUser.getUserName();
 
@@ -152,14 +152,15 @@ public class AuthenticationController {
 		updatePothole.setAdmin_aware(admin_aware);
 		updatePothole.setMarkerId(markerId);
 		updatePothole.setUser(user);
-		
+		if(!repairing) {
+		potholeDAO.updatePotholeListFalse(updatePothole);
+		}else {
+		potholeDAO.updatePotholeList(updatePothole);
+		}
 		if(delete) {
 			potholeDAO.deletePothole(markerId);
 		}
-
-		potholeDAO.updatePotholeList(updatePothole);
 		
-
 		return "redirect:/{currentUser}/potholeList";
 	}
 	
