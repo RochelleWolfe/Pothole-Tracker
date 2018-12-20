@@ -49,10 +49,10 @@
 						<li><a href="${potholeListHref}">View list of current potholes</a></li>
 						<c:url var="reportPotholeHref" value="/${currentUser}/reportPothole" />
 						<li><a href="${reportPotholeHref}">Report a Pothole</a></li>
-						<c:url var="sentMessagesHref" value="/users/${currentUser}/messages" />
+						<!--<c:url var="sentMessagesHref" value="/users/${currentUser}/messages" />
 						<li><a href="${sentMessagesHref}">Sent Messages</a></li>
 						<c:url var="changePasswordHref" value="/users/${currentUser}/changePassword" />
-						<li><a href="${changePasswordHref}">Change Password</a></li>
+						<li><a href="${changePasswordHref}">Change Password</a></li> -->
 					</c:if>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
