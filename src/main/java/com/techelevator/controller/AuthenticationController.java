@@ -139,13 +139,13 @@ public class AuthenticationController {
 	@RequestMapping(path="/{currentUser}/potholeList", method=RequestMethod.POST)
 	public String submitListOfPotholesAdmin(@RequestParam("repairing") List<Boolean> repairing,
 			@RequestParam boolean admin_aware,
-			@RequestParam String markerId,
+			@RequestParam String id,
 			HttpSession session) {
 //		System.out.println(repairing);
 //		System.out.println(admin_aware);
 		
-		System.out.println(repairing);
-		System.out.println(markerId);
+		//System.out.println(repairing);
+		System.out.println(id);
 		
 		User currentUser = (User)session.getAttribute("currentUser");
 		String user = currentUser.getUserName();
@@ -153,7 +153,7 @@ public class AuthenticationController {
 		Pothole updatePothole = new Pothole();
 		//updatePothole.setRepairing(repairing);
 		updatePothole.setAdmin_aware(admin_aware);
-		updatePothole.setMarkerId(markerId);
+		//updatePothole.setMarkerId(markerId);
 		updatePothole.setUser(user);
 
 		potholeDAO.updatePotholeList(updatePothole);
@@ -164,14 +164,10 @@ public class AuthenticationController {
 	
 	@RequestMapping(path="/{currentUser}/potholeDelete", method=RequestMethod.POST)
 	public String deletePotholes(
-			@RequestParam String markerId,
+			@RequestParam String id,
 			HttpSession session) {
-		System.out.println(markerId);
-		
-		User currentUser = (User)session.getAttribute("currentUser");
-		String user = currentUser.getUserName();
-		
-		potholeDAO.deletePothole(markerId);
+			
+		potholeDAO.deletePothole(id);
 		return "redirect:/{currentUser}/potholeList";
 	} 
 	
